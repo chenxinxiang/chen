@@ -1,0 +1,390 @@
+.peopleInfo {
+    border-bottom: 1px solid #ebebeb;
+    margin: 0 auto
+}
+
+.peopleInfo .info {
+    padding-left: 20px
+}
+
+.peopleInfo .info .img {
+    display: block;
+    width: 94px;
+    height: 94px;
+    float: left;
+    border: 5px solid #f2f2f2;
+    border-radius: 50%;
+    overflow: hidden;
+    margin-right: 14px
+}
+
+.peopleInfo .info .img img {
+    display: block
+}
+
+.peopleInfo .info h2 {
+    font-size: 30px;
+    font-weight: bold;
+    color: #ff503f
+}
+
+.peopleInfo .info h2 span {
+    font-size: 18px;
+    font-weight: normal;
+    color: #666
+}
+
+.peopleInfo .info .safe {
+    margin: 8px 0
+}
+
+.scroll {
+    display: inline-block;
+    width: 209px;
+    height: 12px;
+    background: url(../images/scrobg.jpg) no-repeat;
+    margin-right: 5px
+}
+
+.scroll em {
+    display: block;
+    height: 12px;
+    border-radius: 6px;
+    background-color: #a58b48
+}
+
+.listIco {
+    display: inline-block;
+    overflow: hidden
+}
+
+.listIco li {
+    float: left;
+    margin-right: 14px;
+    position: relative
+}
+
+.listIco li a {
+    font-size: 24px;
+    color: #d5d5d5;
+    line-height: 1
+}
+
+.listIco li em {
+    display: block;
+    width: 12px;
+    height: 14px;
+    position: absolute;
+    bottom: 0;
+    right: -6px;
+    font-size: 12px;
+    font-style: normal;
+    color: #ff503f;
+    line-height: 1;
+    display: none
+}
+
+.listIco li a:hover, .listIco li.active a {
+    color: #31a852
+}
+
+.listIco li.active em {
+    display: block
+}
+
+.loginOut {
+    display: inline-block;
+    width: 118px;
+    height: 38px;
+    background-color: #31a852;
+    color: #fff;
+    text-align: center;
+    line-height: 38px;
+    border-radius: 3px;
+    font-weight: bold
+}
+
+.loginOut span {
+    margin-right: 5px
+}
+
+.loginOut:hover {
+    color: #fff;
+    background-color: #53a76a
+}
+
+.iconfont {
+  font-family:"iconfont" !important;
+  font-size:16px;
+  font-style:normal;
+  -webkit-font-smoothing: antialiased;
+  -webkit-text-stroke-width: 0.2px;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.countBox {
+    width: 970px;
+    margin: 0 auto;
+    padding: 35px 0;
+    border-bottom: 3px solid #ebebeb
+}
+
+.countBox ul {
+    overflow: hidden
+}
+
+.countBox ul li {
+    float: left;
+    width: 20%;
+    text-align: center;
+    border-left: 1px solid #ebebeb
+}
+
+.countBox ul li:first-child {
+    border: none
+}
+
+.countBox ul li h2 {
+    font-size: 22px;
+    font-weight: bold;
+    color: #ff503f
+}
+
+.countBox ul li p {
+    font-size: 14px;
+    color: #888;
+    margin: 0;
+    margin-top: 8px
+}
+
+.countBox ul li p a {
+    color: #d0d0d0;
+    margin-left: 5px;
+    position: relative;
+    display: inline-block;
+    width: 16px
+}
+
+.countBox ul li span {
+    display: none;
+    position: absolute;
+    top: -26px;
+    width: auto;
+    white-space: nowrap;
+    font-size: 14px;
+    color: #fff;
+    background-color: #31a852;
+    line-height: 22px;
+    padding: 0 8px;
+    border-radius: 3px;
+    right: -20px
+}
+
+.countBox ul li i {
+    width: 0;
+    height: 0;
+    border-left: 4px solid transparent;
+    border-right: 4px solid transparent;
+    border-top: 4px solid #31a852;
+    position: absolute;
+    top: -4px;
+    right: 5px;
+    display: none
+}
+
+.countBox ul li p a:hover span, .countBox ul li p a:hover i {
+    display: block
+}
+
+.countBox .cz, .countBox .tk {
+    display: inline-block;
+    width: 70px;
+    height: 32px;
+    margin: 8px 0 0 5px;
+    color: #fff;
+    text-align: center;
+    line-height: 32px;
+    border-radius: 3px
+}
+
+.countBox .cz {
+    background-color: #ff503f;
+    margin-left: 20px
+}
+
+.countBox .tk {
+    background-color: #00b3f5
+}
+
+.proMain {
+    width: 970px;
+    margin: 30px auto 0
+}
+
+.adminLeft {
+    width: 210px;
+    float: left;
+    border-top: 2px solid #ff503f;
+    background-color: #f8f8f8;
+    padding-bottom: 50px
+}
+
+.adminLeft h2 {
+    font-size: 16px;
+    line-height: 50px;
+    padding-top: 10px;
+    text-indent: 24px
+}
+
+.adminLeft li a {
+    display: block;
+    line-height: 34px;
+    text-indent: 56px;
+    color: #000
+}
+
+.adminLeft li a em {
+    margin-right: 5px;
+    color: #ac9558
+}
+
+.adminLeft li a em.red {
+    color: #ff5a4a
+}
+
+.adminLeft li a:hover, .adminLeft li a.select {
+    color: #ac9558;
+    font-weight: bold;
+    font-weight: bold;
+    background-color: #efefef
+}
+
+.adminLeft li a:hover em, .adminLeft li a.select em {
+    font-weight: normal
+}
+
+.admin-right {
+    width: 736px;
+    float: right
+}
+
+.admin-right .tbConBox {
+    margin-top: 0;
+    min-height: 452px
+}
+
+.admin-right .tbConBox .box {
+    padding: 20px
+}
+
+.tbBox {
+    width: 320px;
+    background-color: #f9f9f9;
+    border-radius: 6px;
+    display: inline-block;
+    padding: 20px
+}
+
+.tbBox h2 {
+    color: #ff503f;
+    font-size: 20px;
+    font-weight: bold;
+    padding-top: 15px
+}
+
+.tbBox p {
+    font-size: 14px;
+    color: #888;
+    text-align: center;
+    line-height: 30px;
+    border-bottom: 1px solid #ececec;
+    padding-bottom: 10px;
+    margin: 0
+}
+
+.tbBox .tit {
+    display: block;
+    overflow: hidden;
+    position: relative
+}
+
+.tbBox .tit h2 {
+    float: left;
+    padding: 0;
+    line-height: 50px;
+    font-size: 14px;
+    color: #666;
+    font-weight: normal
+}
+
+.tbBox .tit span.fr {
+    float: right;
+    color: #888;
+    line-height: 50px
+}
+
+.tbBox .txt {
+    width: 100%;
+    height: 40px;
+    border: 1px solid #e0e0e0;
+    padding: 0 10px;
+    border-radius: 4px !important
+}
+
+.tbBox button {
+    width: 100%;
+    height: 40px;
+    border-radius: 4px !important;
+    border: none;
+    background-color: #ff503f;
+    color: #fff;
+    margin-top: 10px
+}
+
+.tbConBox {
+    display: block;
+    border: 1px solid #e9e9e9;
+    margin-top: 20px
+}
+
+.tbConBox .tab {
+    height: 40px;
+    background-color: #f9f9f9;
+    border-bottom: 1px solid #e9e9e9
+}
+
+.tbConBox .tab a {
+    display: inline-block;
+    line-height: 40px;
+    padding: 0 20px;
+    border-right: 1px solid #e9e9e9;
+    color: #555;
+    float: left
+}
+
+.tbConBox .tab a:hover, .tbConBox .tab a.select {
+    background-color: #fff;
+    color: #a58b48;
+    font-weight: bold;
+    border-bottom: 1px solid #fff
+}
+
+.tbConBox .box {
+    display: none;
+    padding: 40px;
+}
+
+.tzlist th, .tzlist td {
+    line-height: 40px;
+    text-align: center
+}
+
+.tzlist th {
+    color: #888;
+    background-color: #f9f9f9;
+    font-weight: normal
+}
+
+.tzlist td {
+    color: #666
+}

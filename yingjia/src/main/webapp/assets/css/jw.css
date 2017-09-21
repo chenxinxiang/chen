@@ -1,0 +1,35 @@
+
+
+
+.sdShaix {
+    display: block;
+    padding: 20px;
+    border: 1px solid #e2e2e2;
+    background-color: #fafafa;
+    text-align: center;
+}
+
+.sdShaix ul {
+    overflow: hidden;
+    margin: 10px 0
+}
+
+.sdShaix ul li {
+    float: left;
+    width: 90px;
+    color: #999;
+    line-height: 24px
+}
+
+.sdShaix ul li a {
+    display: inline-block;
+    color: #666
+}
+
+.sdShaix ul li a:hover, .sdShaix ul li a.select {
+    color: #fff;
+    background-color: #9d8440;
+    padding: 0 8px;
+    line-height: 24px;
+    border-radius: 3px
+}
