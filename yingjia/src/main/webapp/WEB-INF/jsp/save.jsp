@@ -4,11 +4,11 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<title>意见反馈表</title>
 </head>
 <body>
-<form action="/yingjia/item/save" method="post">
-         类别 <input  type="text"  id="content" name="content" >
+<form action="/yingjia/item/save" method="post" >
+         类别 <input  type="text"  id="content" name="content"  width="50px" height="50px">
 	公告标题:<input type="text" id="title" name="title">
 	添加时间:<input type="text" id="update_Date" name="update_Date" >
 	<input type="submit" value="提交">

@@ -1,36 +1,37 @@
 package com.cornucopia.bean;
+
 import java.util.Date;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
-//��ֵ��¼��
+//充值记录表
 @Entity
 @Table(name="Member_deposit_record")
 public class MemberDepositRecord {
 
-	private int id;//����
+	private int id;//主键
 	
-	private String serial_number;//��ˮ��
+	private String serial_number;//流水号
 	
-	private int amount;//���
+	private int amount;//金额
 	
-	private int status;//Ĭ�ϡ�0�� ״̬��0����1����ɣ�
 	
-	private String pay_channel_name;//��ֵ�������
+	private int status;//默认‘0’ 状态（0：待付款，1：完成）
 	
-	private String pay_channel_order_no;//��ֵ����������
+	private String pay_channel_name;//充值渠道名称
 	
-	private int delFlag;//��־
+	private String pay_channel_order_no;//充值渠道订单号
 	
-	private Date create_date;//����ʱ��
+	private int delFlag;//标志
 	
-	private Date update_date;//�޸�ʱ��
+	private Date create_date;//创建时间
+	
+	private Date update_date;//修改时间
 	
 	private Member member;
 	
@@ -50,6 +51,7 @@ public class MemberDepositRecord {
 	public void setId(int id) {
 		this.id = id;
 	}
+	
 	public String getSerial_number() {
 		return serial_number;
 	}

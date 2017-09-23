@@ -59,7 +59,7 @@ $(document).ready(function(){
 			  <option value="5">已解冻</option>
 </select>&nbsp;&nbsp;&nbsp;&nbsp;                   
                       创建时间：<input type="text" placeholder="创建时间" name="qcreate_date" value="${qcreate_date}"  style="font-size: 15px"/>&nbsp;&nbsp;&nbsp;&nbsp;
-<input type="submit" value="查询" style="width: 60px;height: 30px"/>&nbsp;&nbsp;&nbsp;&nbsp;
+<input type="submit" value="🔍查询" style="width: 60px;height: 30px"/>&nbsp;&nbsp;&nbsp;&nbsp;
 <input type="reset" value="重置" style="width: 60px;height: 30px">
 </form>
 
@@ -82,7 +82,11 @@ $(document).ready(function(){
     </tr>
 <c:forEach items="${list }" var="list" varStatus="stat">
 <tr>
-<td>${stat.index+1 }</td> <td>${list.member.mobile_Phone }</td>  <td>${list.member.member_name }</td> <td>${list.member.identity }</td> <td>${list.amount }</td> 
+<td>${stat.index+1 }</td>
+ <td>${list.member.mobile_Phone }</td>
+   <td>${list.member.member_name }</td>
+    <td>${list.member.identity }</td>
+     <td>${list.amount }</td> 
 <td>${list.bank_name }</td> <td>${list.bank_card }</td>  <td>${list.cardaddress }</td>  
 <td id=${list.id }>
 <c:if test="${list.status==0}">

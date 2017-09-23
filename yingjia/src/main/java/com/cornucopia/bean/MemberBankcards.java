@@ -8,26 +8,26 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
-//»áÔ±ÒøĞĞ¿¨±í
+//ä¼šå‘˜é“¶è¡Œå¡è¡¨
 @Entity
 @Table(name="Member_bankcards")
 public class MemberBankcards {
 
-	private int id;//Ö÷¼ü
+	private int id;//ä¸»é”®
 	
-	private String type;//ÒøĞĞ¿¨ÀàĞÍ
+	private String type;//é“¶è¡Œå¡ç±»å‹
 	
-	private String card_no;//¿¨ºÅ
+	private String card_no;//å¡å·
 	
 	private Member member;
 	
-	private int delflag;//Ä¬ÈÏ¡®0¡¯ ÊÇ·ñÉ¾³ı(0£ºÕı³£Ê¹ÓÃ£¬2£º±»É¾³ı)
+	private int delflag;//é»˜è®¤â€˜0â€™ æ˜¯å¦åˆ é™¤(0ï¼šæ­£å¸¸ä½¿ç”¨ï¼Œ2ï¼šè¢«åˆ é™¤)
 	
-	private Date create_date;//´´½¨Ê±¼ä
+	private Date create_date;//åˆ›å»ºæ—¶é—´
 	
-	private Date update_date;//ĞŞ¸ÄÊ±¼ä
+	private Date update_date;//ä¿®æ”¹æ—¶é—´
 	
-	private String cardaddress;//¿ª»§ÒøĞĞËùÔÚµØ
+	private String cardaddress;//å¼€æˆ·é“¶è¡Œæ‰€åœ¨åœ°
 	
 	@Id
 	@GeneratedValue

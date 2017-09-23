@@ -9,7 +9,6 @@
 <script type="text/javascript" src="../BgAssets/js/jquery.js"></script>
 <script language="javascript">
 $(function(){	
-	//导航切换
 	$(".imglist li").click(function(){
 		$(".imglist li.selected").removeClass("selected")
 		$(this).addClass("selected");

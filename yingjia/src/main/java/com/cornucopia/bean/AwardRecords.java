@@ -6,26 +6,25 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
-@Table(name="Award_records")//'½±Àø¼ÇÂ¼±í'
+@Table(name="Award_records")//'å¥–åŠ±è®°å½•è¡¨'
 @Entity
 public class AwardRecords {
 
-	private int id;//Ö÷¼ü
+	private int id;//ä¸»é”®
 	
-	private int byinvitingid;//±»ÑûÇëÈËid
+	private int byinvitingid;//è¢«é‚€è¯·äººid
 	
-	private int type;//½±ÀøÀàĞÍ£¨0£º×¢²á½±Àø£¬1£ºÍ¶×Ê½±Àø£©
+	private int type;//å¥–åŠ±ç±»å‹ï¼ˆ0ï¼šæ³¨å†Œå¥–åŠ±ï¼Œ1ï¼šæŠ•èµ„å¥–åŠ±ï¼‰
 	
-	private int amount;//½±Àø½ğ¶î
+	private int amount;//å¥–åŠ±é‡‘é¢
 	
-	private int isAward;//0:Î´½±Àø  1£ºÒÑ½±Àø
+	private int isAward;//0:æœªå¥–åŠ±  1ï¼šå·²å¥–åŠ±
 	
-	private Date addTime;//Ìí¼ÓÊ±¼ä
-	
+	private Date addTime;//æ·»åŠ æ—¶é—´
+
 	private Member member;
 	
 	@ManyToOne

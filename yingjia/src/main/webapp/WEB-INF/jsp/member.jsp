@@ -97,8 +97,6 @@ function fun(){
 </c:forEach>
    </thead>
 </table>
-
-
 </table>
 </body>
 </html>

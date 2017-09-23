@@ -11,9 +11,6 @@
 
     <body>
     
-	<form action="/yingjia/item/listmap" method="post">
-	<input type="text" id="title" name="title">
-	<input type="submit" value="提交">
 
 		<table width="100%" border="1">
 			<tr>

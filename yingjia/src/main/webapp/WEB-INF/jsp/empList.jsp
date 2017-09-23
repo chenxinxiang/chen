@@ -12,22 +12,22 @@
 	<input type="text" id="title" name="title">
 	<input type="submit" value="查询">
 	</form>
-		<table width="100%"   border="2">
+		<table width="100%" height="50px"  border="2">
 			<tr>
-				<td>序号</td>
-				<td>类别</td>
-				<td>公告标题</td>
-				<td>添加时间</td>
-				<td>操作</td>
+				<td width="50px">序号</td>
+				<td width="50px">类别</td>
+				<td width="50px">公告标题</td>
+				<td width="50px">添加时间</td>
+				<td width="50px">操作</td>
 				
 			</tr>
 
 			<c:forEach items="${userlist}" var="e" varStatus="stat">
 				<tr>
-					<td>${stat.index+1 }</td>
-				    <td>${e.title }</td>
-					<td>${e.content }</td> 
-					<td>${e.update_Date }</td>
+					<td width="50px">${stat.index+1 }</td>
+				    <td width="50px">${e.title }</td>
+					<td width="50px">${e.content }</td> 
+					<td width="50px"> ${e.update_Date }</td>
 			
 					
 					<td><a href="/yingjia/item/delete/${e.id }">删除</a>

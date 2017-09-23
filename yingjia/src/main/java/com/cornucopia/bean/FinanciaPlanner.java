@@ -7,26 +7,26 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="Financial_planner")//Àí²ÆÊ¦±í
+@Table(name="Financial_planner")//ç†è´¢å¸ˆè¡¨
 public class FinanciaPlanner {
 
-	private int id;//Ö÷¼ü
+	private int id;//ä¸»é”®
 	
-	private int member_id;//»áÔ±id
+	private int member_id;//ä¼šå‘˜id
 	
-	private String name;//ÕæÊµĞÕÃû
+	private String name;//çœŸå®å§“å
 	
-	private String orgname;//»ú¹¹Ãû³Æ
+	private String orgname;//æœºæ„åç§°
 	
-	private String mycard;//ÎÒµÄÃûÆ¬
+	private String mycard;//æˆ‘çš„åç‰‡
 	
-	private String address;//ÓÊ¼ÄµØÖ·
+	private String address;//é‚®å¯„åœ°å€
 	
-	private int status;//×´Ì¬
+	private int status;//çŠ¶æ€
 	
-	private Date create_date;//´´½¨Ê±¼ä
+	private Date create_date;//åˆ›å»ºæ—¶é—´
 	
-	private Date update_date;//ĞŞ¸ÄÊ±¼ä
+	private Date update_date;//ä¿®æ”¹æ—¶é—´
 	
 	@Id
 	@GeneratedValue

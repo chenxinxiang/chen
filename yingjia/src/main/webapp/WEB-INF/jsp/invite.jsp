@@ -79,8 +79,8 @@ $(document).ready(function(){
 		    </tr>
     <c:forEach items="${list }" var="list" varStatus="status">
     <tr>
-    <th>${status.index+1 }</th> <th>${list.member.mobile_Phone }</th> <th>${list.member.name }</th> <th>${list.member.invitationCode }</th>
-    <th>${list.member.invitedCode }</th> 
+    <th>${status.index+1 }</th> <th>${list.mobile_Phone }</th> <th>${list.member_name }</th> <th>${list.invitationCode }</th>
+    <th>${list.invitedCode }</th> 
     <th>
     		<c:if test="${list.type==0&&list.isAward==0}">否</c:if>
     		<c:if test="${list.type==0&&list.isAward==1}">注册已奖励</c:if>
@@ -93,8 +93,18 @@ $(document).ready(function(){
      </th>
 <th>${list.addTime }</th>
 <th>
-<c:if test="${list.type==0&&list.isAward==1}"><button style="color: blue;"><a href="">注册奖励记录</a></button></c:if>
-<c:if test="${list.type==1&&list.isAward==1}"><button style="color: blue;"><a href="">投资奖励记录</a></button></c:if>
+<c:if test="${list.type==0&&list.isAward==1}">
+<form action="/yingjia/mem/Awarer" method="post">
+<input type="hidden" value="${list.member.id }"  name="id">
+<input type="submit" value="注册奖励记录">
+</form>
+</c:if>
+<c:if test="${list.type==1&&list.isAward==1}">
+<form action="/yingjia/mem/Awarer" method="post">
+<input type="hidden" value="${list.member.id }"  name="id">
+<input type="submit" value="投资奖励记录">
+</form>
+</c:if>
 </th>
    </c:forEach>
   	</thead>

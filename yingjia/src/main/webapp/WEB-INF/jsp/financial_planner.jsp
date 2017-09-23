@@ -15,13 +15,7 @@ window.onload=function fun(){
 </script>
 </head>
 <body style="background-color:#f0f9fd">
-<form  method="post"  action="/yingjia/mem/">
-手机号:<input type="text"  name="mobile_Phone"> 
-真实姓名:<input type="text" name="name">
-状态:<select></select>
-注册时间:<input type="text" name="create_date">
-<input type="submit" value="🔍查询" class="btn_sub">
-</form>
+
 <table border="1" width="100%">
 <input type="hidden" value="${financial.member_id }" name="member_id">
 <tr>

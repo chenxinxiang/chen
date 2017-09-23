@@ -51,6 +51,14 @@ public class Member {
 	public int getId() {
 		return id;
 	}
+	
+	public String getInvitedCode() {
+		return invitedCode;
+	}
+
+	public void setInvitedCode(String invitedCode) {
+		this.invitedCode = invitedCode;
+	}
 
 	public void setId(int id) {
 		this.id = id;
@@ -110,14 +118,6 @@ public class Member {
 
 	public void setIdentity(String identity) {
 		this.identity = identity;
-	}
-
-	public String getInvitedCode() {
-		return invitedCode;
-	}
-
-	public void setInvitedCode(String invitedCode) {
-		this.invitedCode = invitedCode;
 	}
 
 	public String getCreate_date() {
