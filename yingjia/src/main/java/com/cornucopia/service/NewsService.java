@@ -10,7 +10,6 @@ import com.cornucopia.bean.NewsType;
 @Transactional
 public interface NewsService {
 	
-	//资讯类别
 	
 		public void saveNewsTypeAll(NewsType newsType);
 		
@@ -18,7 +17,7 @@ public interface NewsService {
 		
 		public List<NewsType> listNewsTypeAll();
 		
-		public List<News> listNewsAll();
+		public List<News> listNewsAll(String title,String typeid);
 		
 		public void updateNewsType(NewsType newsType);
 
@@ -30,8 +29,4 @@ public interface NewsService {
 				
 		public void deleteNews(int id);
 		
-		public List<News> newsList(String title);
-		
-		public List<News> newsListTo(String name);
-
 }

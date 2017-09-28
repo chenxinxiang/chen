@@ -37,79 +37,76 @@ $(document).ready(function(){
   $(".cancel").click(function(){
   $(".tip").fadeOut(100);
 });
-
+  
 });
 </script>
 <title>Insert title here</title>
 </head>
 <body>
-<form action="/yingjia/mem/selinvite" style="width: 100%px; height: 30px; font-size: 15px">
-姓名:<input type="text" name="name">
-手机号:<input type="text" name="mobile_Phone">
-邀请码:<input type="text" name="invitationCode">
-被邀请码:<input type="text" name="invitedCode">
-是否已注册奖励:
-<select name="isAward1">
-	<option value="">全部</option>
-	<option value="0">未奖励</option>
-	<option value="1">注册已奖励</option>
-</select>
-
-是否已投资奖励:
-<select name="isAward2">
-	<option value="">全部</option>
-	<option value="0">未奖励</option>
-	<option value="1">投资已奖励</option>
-</select>
-<input type="submit" placeholder="用户名" value="🔍查询"/ style="width: 60px;height: 30px">&nbsp;&nbsp;&nbsp;&nbsp;
-<input type="reset" value="重置" style="width: 60px;height: 30px">  
-</form>
-<table class="imgtable">
-    <thead>
-		    <tr>
-		    <th>序号</th>
-		    <th>手机号</th>
-		    <th>姓名</th>
-		    <th>邀请码</th>
-		    <th>被邀请码 </th>
-		    <th>是否已注册奖励  </th>
-		    <th>是否已投资奖励</th>
-		    <th>注册时间</th>
-		    <th>操作</th>
-		    </tr>
-    <c:forEach items="${list }" var="list" varStatus="status">
-    <tr>
-    <th>${status.index+1 }</th> <th>${list.mobile_Phone }</th> <th>${list.member_name }</th> <th>${list.invitationCode }</th>
-    <th>${list.invitedCode }</th> 
-    <th>
-    		<c:if test="${list.type==0&&list.isAward==0}">否</c:if>
-    		<c:if test="${list.type==0&&list.isAward==1}">注册已奖励</c:if>
-	    	<c:if test="${list.type!=0}">否</c:if>
-    </th>
-     <th>
-   <c:if test="${list.type==1&&list.isAward==0}">否</c:if>
-   <c:if test="${list.type==1&&list.isAward==1}">投资已奖励</c:if>
-   <c:if test="${list.type!=1}">否</c:if>
-     </th>
-<th>${list.addTime }</th>
-<th>
-<c:if test="${list.type==0&&list.isAward==1}">
-<form action="/yingjia/mem/Awarer" method="post">
-<input type="hidden" value="${list.member.id }"  name="id">
-<input type="submit" value="注册奖励记录">
-</form>
-</c:if>
-<c:if test="${list.type==1&&list.isAward==1}">
-<form action="/yingjia/mem/Awarer" method="post">
-<input type="hidden" value="${list.member.id }"  name="id">
-<input type="submit" value="投资奖励记录">
-</form>
-</c:if>
-</th>
-   </c:forEach>
-  	</thead>
-  	</tr>
- </table>
+<form action="/yingjia/mem/selinvite" method="post">
+姓名：<input type="text" placeholder="姓名" name="qmember_name" value="${qmember_name }"/>&nbsp;&nbsp;&nbsp;&nbsp;
+手机号：<input type="text" placeholder="手机号" name="qmobile_Phone" value="${qmobile_Phone}"/>&nbsp;&nbsp;&nbsp;&nbsp;
+邀请码：<input type="text" placeholder="邀请码" name="qinvitationCode" value="${qinvitationCode }"/>&nbsp;&nbsp;&nbsp;&nbsp;
+被邀请码:<input type="text" placeholder="被邀请码" name="qinvitedCode" value="${qinvitedCode }"/>&nbsp;&nbsp;&nbsp;&nbsp;
+                                         是否已注册奖励：
+                     <select name="qtype">
+                        <option value="">请选择</option>
+                        <option value="0">否</option>
+                        <option value="2">是</option>
+                      </select>&nbsp;&nbsp;&nbsp;&nbsp;                 
+                                         是否已投资奖励：
+                     <select name="qisAward">
+                        <option value="">请选择</option>
+                        <option value="0">否</option>
+                        <option value="2">是</option>
+                      </select>&nbsp;&nbsp;&nbsp;&nbsp;                    
+                 <input type="submit" value="查询"/>&nbsp;&nbsp;&nbsp;&nbsp;
+                 <input type="reset" value="重置">
+</form><br/>
+                            
+                       <table class="datatable table table-striped" cellspacing="0" width="100%">
+                            <caption style="text-align: center; font-size:30px; color:red;">邀请奖励表</caption>
+                                 <thead>
+                                    <tr style="font-size:15px; color:black;">
+						               <th>序号</th><th>姓名</th><th>手机号</th>
+						               <th>邀请码</th><th>被邀请码</th><th>投资金额</th>
+						               <th>是否已注册奖励</th><th>是否已投资奖励</th><th>注册时间</th>
+						               <th>操作</th>
+                      				</tr>
+						           </thead>
+						           <tbody align="center">
+                                       <c:forEach items="${rangeList }" var="range" varStatus="stat">
+						                     <tr>
+						                       <td>${stat.index+1}</td>
+						                       <td>${range.member_name }</td>
+						                       <td>${range.mobile_Phone }</td>
+						                       <td>${range.invitationCode }</td>
+						                       <td>${range.invitedCode }</td>
+						                       <td>${range.amount }</td>
+						                       <td>
+						                         <c:choose>
+										           <c:when test="${range.type=='2' }">是</c:when>
+										           <c:otherwise>否</c:otherwise>
+										         </c:choose>
+						                       </td>
+						                       <td>
+						                         <c:choose>
+										           <c:when test="${range.isAward=='2' }">是</c:when>
+										           <c:otherwise>否</c:otherwise>
+										         </c:choose>
+						                       </td>
+						                       <td>${range.addTime }</td>
+						                       <td>
+						                          <c:choose>
+						                             <c:when test="${range.type=='2'&& range.isAward=='2' }"><font color="blue">注册已奖励</font>||<font color="blue">投资已奖励</font></c:when>
+						                             <c:otherwise><font color="black">不能注册</font></c:otherwise>
+						                          </c:choose>
+						                         <a href="/yingjia/mem/Reward?id=${range.invitingid }">奖励记录</a>
+						                       </td>
+						                       </tr>
+						               </c:forEach>
+						           </tbody>
+                           </table>
 
 </body>
 </html>

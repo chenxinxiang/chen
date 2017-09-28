@@ -1,5 +1,6 @@
 package com.cornucopia.controller;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -8,9 +9,13 @@ import javax.annotation.Resource;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.RequestMapping;import com.cornucopia.bean.AwardRecords;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+
+import com.cornucopia.bean.AwardRecords;
 import com.cornucopia.bean.Member;
 import com.cornucopia.bean.Range;
+import com.cornucopia.bean.SubjectPurchaseRecord;
 import com.cornucopia.service.MemberService;
 
 
@@ -94,33 +99,6 @@ public class MemberController {
 		}
 		
 		
-		
-	//付息计划管理 
-	//投资金额*年化率/365*周期 
-	//subject serial_no==合同编号 type==标的类型 name==标的名称
-	//amount==标的金额 bought==已购人数  period==标的周期  delflag=募集中 ==1以结束  exper_status 体验金是否可以购买（0：否，1：是）
-//	@RequestMapping("/Subject")
-//	public String SubjectAll(Model model){
-//		List list=this.MemberServiceImpl.SubjectAll();
-//		System.out.println(list.size());
-//		model.addAttribute("list", list);
-//		return "interest";
-//	}
-//	@RequestMapping("/selSubject")
-//	public String selSubject(String qname,String qstatus,String qtype,Model model ){
-//			Map map=new HashMap();
-//			map.put("qname",qname);
-//			map.put("qstatus",qstatus);
-//			map.put("qtype",qtype);
-//			System.out.println(qtype);
-//		List list=this.MemberServiceImpl.selSubject(map);
-//		System.out.println(list.size());
-//		model.addAttribute("list", list);
-//		return "interest";
-//	}
-		
-		
-		
 	//充值管理
 	//充值显示
 	@RequestMapping("/Record")
@@ -168,6 +146,14 @@ public class MemberController {
 		model.addAttribute("list", list);
 		return "withdraw";
 	}
+	//审核
+	@RequestMapping("/Audit")
+	public String Auudit(String id,Model model){
+		this.MemberServiceImpl.Audit(Integer.parseInt(id));
+		List list=this.MemberServiceImpl.Wrecord();
+		model.addAttribute("list", list);
+		return "withdraw";
+	}
 	
 	//提现模糊
 	@RequestMapping("/selWrecor")
@@ -186,39 +172,137 @@ public class MemberController {
 	
 	
 	
-	//邀请显示
-	@RequestMapping("/inviteList")
-	public String invite(Model model){
+	
+	@RequestMapping("/listAll")
+	public String SubjectAll(Model model,@RequestParam(required=false)String qname,String qstatus,String qtype){
 		Map map=new HashMap();
-		List list=this.MemberServiceImpl.listRangeAll(map);
-		model.addAttribute("list",list);
-		return "invite";
+		map.put("qname", qname);
+		map.put("qstatus", qstatus);
+		map.put("qtype", qtype);
+		List<SubjectPurchaseRecord> subjectList=MemberServiceImpl.listRange(map);
+		model.addAttribute("subjectList", subjectList);
+		model.addAttribute("qname",qname );
+		model.addAttribute("qstatus",qstatus );
+		model.addAttribute("qtype",qtype );
+		return "interest";
 	}
+	@RequestMapping("/Subject")
+	public String selSubject(String qname,String qstatus,String qtype,Model model ){
+		if(qstatus!=null && qstatus.equals("-1")){
+			qstatus=null;
+		}
+		if(qtype!=null && qtype.equals("-1")){
+			qtype=null;
+		}
+		Map map=new HashMap();
+		map.put("qname", qname);
+		map.put("qstatus", qstatus);
+		map.put("qtype", qtype);
+		List<SubjectPurchaseRecord> subjectList=MemberServiceImpl.listRange(map);
+		model.addAttribute("subjectList", subjectList);
+		model.addAttribute("qname",qname );
+		model.addAttribute("qstatus",qstatus );
+		model.addAttribute("qtype",qtype );
+		return "interest";
+		
+	}
+	//体验金付息
+		@RequestMapping("/listNews")
+		public String listNews(int id,Model model){
+			System.out.println("ID:"+id);
+			List<SubjectPurchaseRecord> SubjectPurchaseRecord=this.MemberServiceImpl.getById(id);
+			model.addAttribute("subjectBbinPurchaseRecordList", SubjectPurchaseRecord);
+			return "interest2";
+		}
+		@RequestMapping("/update")
+		public String update(int id,Model model){
+			Map map =new HashMap();
+			this.MemberServiceImpl.update(id);
+			List<SubjectPurchaseRecord> subjectList=MemberServiceImpl.listRange(map);
+			model.addAttribute("subjectList", subjectList);
+			return "interest";
+		}
+		//付息列表
+		@RequestMapping("/listFuxi")
+		public String listFuxi(int id,Model model){
+			List list=this.MemberServiceImpl.listAll(id);
+			model.addAttribute("subjectPurchaseRecordsList", list);
+			return "interest3";
+		}
+		//付息修改
+		@RequestMapping("/updateFuxi")
+		public String updateFuxi(int id,Model model){
+			Map map=new HashMap();
+			this.MemberServiceImpl.updateFuXi(id);
+			List<SubjectPurchaseRecord> subjectList=MemberServiceImpl.listRange(map);
+			model.addAttribute("subjectList",subjectList);
+			return "interest";
+		}
+		
+		//主页面显示
+		@RequestMapping("/inviteList")
+		public String invite(Model model){
+			Map map=new HashMap();
+			List list=this.MemberServiceImpl.listRangeAll2(map);
+			model.addAttribute("rangeList",list);
+			return "invite";
+		}
+		
+		//邀请模糊查询
+		@RequestMapping("/selinvite")
+		public String selinvite(String qmember_name,String qmobile_Phone,String qinvitationCode,String qinvitedCode,String qisAward1 ,String qisAward2,Model model ){
+		Map map=new HashMap();
+		map.put("qmember_name",qmember_name );
+		map.put("qmobile_Phone",qmobile_Phone );
+		map.put("qinvitationCode",qinvitationCode );
+		map.put("qinvitedCode",qinvitedCode );
+		map.put("qtype",qisAward1 );
+		map.put("qisAward",qisAward2 );
+		List<Range> rangeList=MemberServiceImpl.listRangeAll2(map);
+		model.addAttribute("rangeList", rangeList);
+			return "invite";
+		}
+		//奖励记录
+		@RequestMapping("/Reward")
+		public String Reward(Model model,String id){
+			System.out.println(id+"------------");
+			List list1=new ArrayList();
+			List list2=new ArrayList();
+			List list3 =new ArrayList();
+			 List aw=this.MemberServiceImpl.Reward(Integer.parseInt(id));
+			 List aw2=this.MemberServiceImpl.Reward2(Integer.parseInt(id));
+	    for(int i=0;i<aw.size();i++){
+	    	Member mem=new Member();
+	        	Object[] obj=(Object[])aw.get(i);
+			   mem.setMobile_Phone(obj[0].toString());
+			   mem.setInvitedCode(obj[1].toString());
+			   list1.add(mem);
+		}
+	    for(int i=0;i<aw2.size();i++){
+	    	AwardRecords awar=new AwardRecords();
+	        	Object[] obj2=(Object[])aw2.get(i);
+	        	awar.setType(Integer.parseInt(obj2[1].toString()));
+	        	awar.setAddTime(obj2[2].toString());
+	        	 int amous=0;
+	      	   if(obj2[3]==null){
+	      		   amous=0;
+	      	   }else{
+	      		   amous=(int)Float.parseFloat(obj2[3].toString());
+	      	   }
+	        	awar.setAmount(amous);
+			   list2.add(awar);
+		}
+	    for(int i=0;i<aw2.size()/2;i++){
+	    	Member mem2=new Member();
+	        	Object[] obj3=(Object[])aw2.get(i);
+	        	mem2.setMobile_Phone(obj3[0].toString());
+			   list3.add(mem2);
+		}
+		    model.addAttribute("awardRecordsList", list1);
+		    model.addAttribute("user", list2);
+		    model.addAttribute("user2", list3);
+		    return "invitation2";
+		}
+
 	
-	
-	//邀请模糊查询
-	@RequestMapping("/selinvite")
-	public String selinvite(String qmember_name,String qmobile_Phone,String qinvitationCode,String qinvitedCode,String qisAward1 ,String qisAward2,Model model ){
-	Map map=new HashMap();
-	map.put("qmember_name",qmember_name );
-	map.put("qmobile_Phone",qmobile_Phone );
-	map.put("qinvitationCode",qinvitationCode );
-	map.put("qinvitedCode",qinvitedCode );
-	map.put("qtype",qisAward1 );
-	map.put("qisAward",qisAward2 );
-	List<Range> rangeList=MemberServiceImpl.listRangeAll(map);
-	model.addAttribute("rangeList", rangeList);
-	
-		return "invite";
-//	}
-//	//邀请奖励记录
-//	@RequestMapping("/Awarer")
-//	public String Awer(int id,Model model){
-//		System.out.println(id);
-//		Member awas=this.MemberServiceImpl.Awares(id);
-//		model.addAttribute("list",awas);
-//		return "Reg";
-//	}
-	
-}
 }

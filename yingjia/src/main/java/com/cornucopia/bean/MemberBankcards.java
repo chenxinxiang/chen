@@ -8,26 +8,25 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
-//会员银行卡表
 @Entity
 @Table(name="Member_bankcards")
 public class MemberBankcards {
 
-	private int id;//主键
+	private int id;
 	
-	private String type;//银行卡类型
+	private String type;
 	
-	private String card_no;//卡号
+	private String card_no;
 	
 	private Member member;
 	
-	private int delflag;//默认‘0’ 是否删除(0：正常使用，2：被删除)
+	private int delflag;
 	
-	private Date create_date;//创建时间
+	private String create_date;
 	
-	private Date update_date;//修改时间
+	private String update_date;
 	
-	private String cardaddress;//开户银行所在地
+	private String cardaddress;
 	
 	@Id
 	@GeneratedValue
@@ -65,16 +64,16 @@ public class MemberBankcards {
 	public void setDelflag(int delflag) {
 		this.delflag = delflag;
 	}
-	public Date getCreate_date() {
+	public String getCreate_date() {
 		return create_date;
 	}
-	public void setCreate_date(Date create_date) {
+	public void setCreate_date(String create_date) {
 		this.create_date = create_date;
 	}
-	public Date getUpdate_date() {
+	public String getUpdate_date() {
 		return update_date;
 	}
-	public void setUpdate_date(Date update_date) {
+	public void setUpdate_date(String update_date) {
 		this.update_date = update_date;
 	}
 	public String getCardaddress() {

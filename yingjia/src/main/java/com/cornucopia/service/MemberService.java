@@ -12,31 +12,24 @@ import com.cornucopia.bean.MemberBankcards;
 import com.cornucopia.bean.MemberDepositRecord;
 import com.cornucopia.bean.Range;
 import com.cornucopia.bean.Subject;
+import com.cornucopia.bean.SubjectPurchaseRecord;
 
 public interface MemberService {
 
 	
-	//è´¦å·æ˜¾ç¤º
 	public List<Member> listMember();
-	//è´¦å·æ¨¡ç³ŠæŸ¥è¯¢
 	public List<Member> listMap(Map map);
 	public String listHql(String hql,Map map);
-   //è´¦å·è¯¦æƒ…	
 	public Member selMemberOrder(int id) ;
-  //public MemberAccount capital(int id);
 	
 	
 	
-	//ä¼šå‘˜ç†è´¢å¸ˆç®¡ç†
 	public List<FinanciaPlanner> ListFinancial();
 
 	
 	
-	//ä¼šå‘˜ç»‘å¡ç®¡ç†
 	public List<MemberBankcards> cardsList();
-	//ä¼šå‘˜è§£ç»‘ç®¡ç†
 	public void card(int id);
-	//æ¨¡ç³ŠæŸ¥è¯¢
 	public List listCards(Map map);
 	public String HqlCards(Map map,String hql);
 	
@@ -48,27 +41,46 @@ public interface MemberService {
 //	
 	
 	
-	//å……å€¼ç®¡ç†
-	//å……å€¼æ˜¾ç¤º
 	public List<MemberDepositRecord> Record();
 	
 	public List<MemberDepositRecord> listRecord(Map map);
-	
+
 	public String RecordHql(Map map,String hql);
 
 	
 	
-	//æç°ç®¡ç†
-	//æ˜¾ç¤º
 	public List<MembeWithdrawRecord> Wrecord();
-	//è§£å†»
 	public void Thaw(int id);
+	
+	public void Audit(int id);
 	public List<MembeWithdrawRecord> withdrawMap(Map map);
 	public String withdrawHql(Map map,String hql);
+	
+	
+	//¸¶Ï¢Ö÷Ò³ÃæÏÔÊ¾
+		public List<Subject> SubMap(Map map);
+		public List<SubjectPurchaseRecord> listRange(Map map);
+		//Ä£ºı²éÑ¯
+		public String SubHql(Map map,String sql);
+		//µã»÷ÌåÑé½ğ¸¶Ï¢°´Å¥ÏÔÊ¾¹ºÂòĞÅÏ¢
+		public List<SubjectPurchaseRecord> getById(int id);
+		//µã»÷»¹¿î°´Å¥½øĞĞ»¹¿î²Ù×÷,×´Ì¬-->ÒÑ»¹¿î£¬°´Å¥--->ÒÑ»¹¿î
+		public void update(int id);
+		//¸¶Ï¢ÁĞ±íÏÔÊ¾
+		public List<SubjectPurchaseRecord> listAll(int id);
+		public String getHql(Map map,String hql);
+		public void updateFuXi(int id);
+		public List<Range> listRangeAll(Map map); 
+		
+		
 
-	
-	
-	//é‚€è¯·æ˜¾ç¤º
-	public List<Range> listRangeAll(Map map); 
-	
+		//ÑûÇëÏÔÊ¾
+			public List<Range> listRangeAll2(Map map); 
+			//½±Àø¼ÇÂ¼
+			//±»ÑûÇëÈËĞÅÏ¢
+			public List <AwardRecords> Reward(int id);
+			//ÑûÇëÈËĞÅÏ¢
+			public List <AwardRecords> Reward2(int id);
+
+
 }

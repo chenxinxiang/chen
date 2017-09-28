@@ -2,10 +2,10 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>Dome</groupId>
-	<artifactId>yingjia</artifactId>
+	<artifactId>Cornucopia</artifactId>
 	<packaging>war</packaging>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>yingjia Maven Webapp</name>
+	<name>Cornucopia Maven Webapp</name>
 	<url>http://maven.apache.org</url>
 	<dependencies>
 		<dependency>
@@ -20,7 +20,14 @@
 			<artifactId>jstl</artifactId>
 			<version>1.2</version>
 		</dependency>
-
+		
+		<dependency>  
+            <groupId>net.sf.json-lib</groupId>  
+            <artifactId>json-lib</artifactId>  
+            <version>2.4</version>  
+            <classifier>jdk15</classifier>   
+        </dependency> 
+		
 		<!-- servlet-api -->
 		<dependency>
 			<groupId>javax.servlet</groupId>
@@ -76,8 +83,6 @@
 			<version>2.3.1</version>
 			<scope>provided</scope>
 		</dependency>
-
-		
 
 <!-- https://mvnrepository.com/artifact/commons-beanutils/commons-beanutils -->
 <dependency>

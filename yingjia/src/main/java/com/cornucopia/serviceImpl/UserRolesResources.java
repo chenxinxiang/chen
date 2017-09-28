@@ -18,14 +18,12 @@ public class UserRolesResources implements UserService{
 
 	@Autowired
 	private UserRolesResourcesDaoImpl userRolesResourcesDaoImpl;
-	//��ѯ������
 	@Override
 	public List<Resources> ListAll(Object...objects) {
 		List<Resources> UserResources=userRolesResourcesDaoImpl.ListAll();
 		return UserResources;
 	}
 	@Override
-	//�м�����Ȩ��
 	public void save(Object...objects) {
 		userRolesResourcesDaoImpl.save(objects);
 		// TODO Auto-generated method stub

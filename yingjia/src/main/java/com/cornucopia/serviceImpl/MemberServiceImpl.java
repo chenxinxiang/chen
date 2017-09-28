@@ -16,6 +16,7 @@ import com.cornucopia.bean.MemberBankcards;
 import com.cornucopia.bean.MemberDepositRecord;
 import com.cornucopia.bean.Range;
 import com.cornucopia.bean.Subject;
+import com.cornucopia.bean.SubjectPurchaseRecord;
 import com.cornucopia.dao.MemberDao;
 import com.cornucopia.service.MemberService;
 
@@ -24,7 +25,6 @@ import com.cornucopia.service.MemberService;
 public class MemberServiceImpl implements MemberService{
 	
 	
-	//会员账号管理
 	@Autowired
 	private MemberDao memberDao;
 	
@@ -44,22 +44,18 @@ public class MemberServiceImpl implements MemberService{
 		return this.memberDao.selMemberOrder(id);
 	}
 	
-	//会员理财师管理
 	public List<FinanciaPlanner> ListFinancial(){
 		return this.memberDao.ListFinancial();
 	}
 	
 	
-	//会员绑卡管理
 	public List<MemberBankcards> cardsList(){
 		return this.memberDao.cards();
 	}
-	//会员解绑管理
 	@Override
 	public void card(int id) {
 	 this.memberDao.card(id);
 	}
-	//模糊查询
 	public List listCards(Map map){
 		return this.memberDao.listCards(map);
 	}
@@ -70,15 +66,10 @@ public class MemberServiceImpl implements MemberService{
 	
 	
 	
-	//付息计划管理
 	
 	
 	
 	
-	
-	
-	//充值管理
-		//充值显示
 		public List<MemberDepositRecord> Record(){
 			return this.memberDao.Record();
 		}
@@ -94,39 +85,14 @@ public class MemberServiceImpl implements MemberService{
 	
 	
 	
-//	public List<Member> selMember(String hql) {
-//		return memberDao.selMember(hql);
-//	}
-//	
-//	public List<Member> listMap(Map map){
-//		return this.memberDao.listMap(map);
-//		
-//	}
-//	
-//	public String listHql(String hql,Map map){
-//		return this.memberDao.listHql(hql, map);
-//	}
-//	
-//	//付息计划管理
-//	public List<Subject> SubjectAll(){
-//		return this.memberDao.SubjectAll();
-//	}
-//	
-//	public List<Subject> selSubject(Map map){
-//		return this.memberDao.selSubject(map);
-//	}
-//	public String SubjectHql(Map map,String hql){
-//		return this.memberDao.SubjectHql(map, hql);
-//	}
-//	
-	//提现管理
-	//显示
 	public List<MembeWithdrawRecord> Wrecord(){
 		return this.memberDao.Wrecord();
 	}
-	//解冻
 	public void Thaw(int id){
 		this.memberDao.Thaw(id);
+	}
+	public void Audit(int id){
+		this.memberDao.Audit(id);
 	}
 	
 	public List<MembeWithdrawRecord> withdrawMap(Map map){
@@ -136,10 +102,59 @@ public class MemberServiceImpl implements MemberService{
 		return this.memberDao.withdrawHql(map, hql);
 	}
 	
-	
-	//邀请显示
 	@Override
 	public List<Range> listRangeAll(Map map) {
 		return this.memberDao.ListRangeAll(map);
 	}
+	
+	@Override
+	public List<Subject> SubMap(Map map) {
+		return this.memberDao.SubMap(map);
+	}
+	@Override
+	public List<SubjectPurchaseRecord> listRange(Map map) {
+		return this.memberDao.listRange(map);
+	}
+	@Override
+	public String SubHql(Map map, String sql) {
+		return this.memberDao.SubHql(map, sql);
+	}
+	@Override
+	public List<SubjectPurchaseRecord> getById(int id) {
+		return this.memberDao.getById(id);
+	}
+	@Override
+	public void update(int id) {
+		this.memberDao.update(id);
+	}
+	@Override
+	public List<SubjectPurchaseRecord> listAll(int id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	@Override
+	public String getHql(Map map, String hql) {
+		// TODO Auto-generated method stub
+		return this.memberDao.getHql(map, hql);
+	}
+	@Override
+	public void updateFuXi(int id) {
+		this.memberDao.updateFuXi(id);
+	}
+	@Override
+	public List<Range> listRangeAll2(Map map) {
+		return this.memberDao.ListRangeAll2(map);
+	}
+	//������¼
+	@Override
+	public List <AwardRecords> Reward(int id) {
+		return this.memberDao.Reward1(id);
+	}
+	@Override
+	public List <AwardRecords> Reward2(int id){
+		return this.memberDao.Reward2(id);
+		
+	}
+
+	
 }

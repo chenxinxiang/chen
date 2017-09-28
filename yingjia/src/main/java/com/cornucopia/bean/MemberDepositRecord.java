@@ -9,29 +9,26 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
-//充值记录表
 @Entity
 @Table(name="Member_deposit_record")
 public class MemberDepositRecord {
 
-	private int id;//主键
+	private int id;
 	
-	private String serial_number;//流水号
+	private String serial_number;
 	
-	private int amount;//金额
+	private int amount;
 	
 	
-	private int status;//默认‘0’ 状态（0：待付款，1：完成）
+	private int status;
+	private String pay_channel_name;
 	
-	private String pay_channel_name;//充值渠道名称
+	private String pay_channel_order_no;
 	
-	private String pay_channel_order_no;//充值渠道订单号
+	private int delFlag;
 	
-	private int delFlag;//标志
-	
-	private Date create_date;//创建时间
-	
-	private Date update_date;//修改时间
+	private String create_date;
+	private String update_date;
 	
 	private Member member;
 	
@@ -88,17 +85,17 @@ public class MemberDepositRecord {
 	public void setDelFlag(int delFlag) {
 		this.delFlag = delFlag;
 	}
-	public Date getCreate_date() {
+	public String getCreate_date() {
 		return create_date;
 	}
-	public void setCreate_date(Date create_date) {
-		this.create_date = create_date;
+	public void setCreate_date(String date) {
+		this.create_date = date;
 	}
-	public Date getUpdate_date() {
+	public String getUpdate_date() {
 		return update_date;
 	}
-	public void setUpdate_date(Date update_date) {
-		this.update_date = update_date;
+	public void setUpdate_date(String date) {
+		this.update_date = date;
 	}
 	
 }

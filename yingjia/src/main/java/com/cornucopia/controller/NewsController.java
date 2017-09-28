@@ -27,8 +27,8 @@ public class NewsController {
 	}
 	
 	@RequestMapping("/listNewsAll")
-	public String listNewsAll(Model model){
-		List<News> newsList=newsServiceImpl.listNewsAll();
+	public String listNewsAll(Model model,String title,String typeid){
+		List<News> newsList=newsServiceImpl.listNewsAll(title, typeid);
 		model.addAttribute("newsList",newsList);
 		List<NewsType> newsTypeList=newsServiceImpl.listNewsTypeAll();
 		model.addAttribute("newsTypeList",newsTypeList);
@@ -104,22 +104,5 @@ public class NewsController {
 		return "redirect:/news/listNewsAll";
 	}
 	
-	
-	
-	//模糊查询
-	@RequestMapping("/queryNews")
-	public String queryNews(String title,String name,Model model){
-		if(!title.equals("")||title!=null&&name==null||name.equals("")){
-			System.out.println(title);
-			List<News> newsList=this.newsServiceImpl.newsList(title);
-			model.addAttribute("newsList",newsList);
-		}
-		if(!name.equals("")||name!=null&&title==null||title.equals("")){
-			System.out.println(name);
-			List<News> newsList=this.newsServiceImpl.newsListTo(name);
-			model.addAttribute("newsList",newsList);		
-		}
-		return "BgNews";
-	}
 	
 }

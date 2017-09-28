@@ -7,9 +7,17 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>公告管理</title>
-<body>
+<style>
+   .input{
+	width:1000px;
+	height:25px;
+	<!--font-size:500px;--> 
+	<!--line-height:500px;-->
+	  }
+  </style>
+   <body>
 	<form action="/yingjia/item/listxian" method="post">
-	<input type="text" id="title" name="title">
+	模糊查询:<input class="input" type="text" id="title" name="title">
 	<input type="submit" value="查询">
 	</form>
 		<table width="100%" height="50px"  border="2">

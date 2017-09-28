@@ -10,8 +10,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import com.cornucopia.bean.FinanceProductFunds;
+import com.cornucopia.bean.FinanceProductSubscribe;
 import com.cornucopia.dao.BKFinanceProductFundsDao;
 import com.cornucopia.service.SubjectService;
+
+import net.sf.json.JSONArray;
 
 @Component
 @Transactional
@@ -31,7 +34,7 @@ public class BKFinanceProductFundsService implements SubjectService{
 
 
 	@Override
-	public List listall(String name, String status, String type) {
+	public List<FinanceProductFunds> listall(String name, String status, String type) {
 		if(name==null){
 			name="";
 		}
@@ -47,8 +50,24 @@ public class BKFinanceProductFundsService implements SubjectService{
 
 	@Override
 	public void save(Object object) {
-		// TODO Auto-generated method stub
-		
+		FinanceProductFunds fpf=(FinanceProductFunds)object;
+		Date dt=new Date();
+	     SimpleDateFormat matter1=new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
+	     String str=matter1.format(dt);
+	     try {
+			fpf.setCreate_date(matter1.parse(str));
+			fpf.setUpdate_date(matter1.parse(str));
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+	     fpf.setInvest_points("1");
+	     fpf.setProduct_manager_desc("");
+	     fpf.setProduct_factor("");
+	     fpf.setProduct_manager("");
+	     fpf.setProduct_manager_name("");
+	     fpf.setProduct_manager_pic("");
+	     fpf.setProduct_manager_title("");
+	     BKFinanceProductFundsDao.save(fpf);
 	}
 
 	@Override
@@ -71,8 +90,25 @@ public class BKFinanceProductFundsService implements SubjectService{
 
 	@Override
 	public double getTotalMoney(int id) {
-		// TODO Auto-generated method stub
+		double num=BKFinanceProductFundsDao.getTotalMoney(id);
 		return 0;
+	}
+
+
+
+	@Override
+	public String gettouzi(int id) {
+		List<FinanceProductSubscribe> list=BKFinanceProductFundsDao.gettouzi(id);
+		JSONArray jlist=JSONArray.fromObject(list);
+		return jlist.toString();
+	}
+
+
+
+	@Override
+	public List list() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 	

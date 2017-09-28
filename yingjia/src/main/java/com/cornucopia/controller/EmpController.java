@@ -1,5 +1,7 @@
 package com.cornucopia.controller;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -22,6 +24,7 @@ public class EmpController {
      	
     @Resource
 	public EmpService empServiceImpl;
+	
     
 	@RequestMapping("/listmap")
 	   public String listmap(Model model){
@@ -69,6 +72,9 @@ public class EmpController {
 	
 	@RequestMapping("/save")
 	public String save(Pushnotice pushnotice){
+		SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");//设置日期格式
+		String time=df.format(new Date());// new Date()为获取当前系统时间
+		pushnotice.setUpdate_Date(time);
 		this.empServiceImpl.save(pushnotice);
 		return "redirect:/item/listxian";
 	}	

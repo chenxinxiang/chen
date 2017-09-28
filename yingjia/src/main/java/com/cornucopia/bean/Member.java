@@ -3,47 +3,27 @@ package com.cornucopia.bean;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
 @Table(name="Member")
 public class Member {
-	
 	private int id;
-	
-	private String member_name; //��ʵ����
-	
-	private String name;//�û���
-	
+	private String member_name;
+	private String name;
 	private String password;
-	
-	private String salt; //������
-	
-	private String mobile_Phone;//�绰
-	
-	private int status;//�˺�״̬������ɾ�� 
-	
-	private int del_flag; //ɾ���־
-	
-	private String identity;//���
-	
-	private String create_date;//����ʱ��
-	
-	private String update_date;//�޸�ʱ��
-	
-	private String weiBoAccount;//΢���˺Ź���
-	
-	private String weixinAccount;//΢���˺Ź���
-	
-	private int headid;//ͷ��ͼƬid
-	
-	private String invitationCode;//������
-	
-	private String  withdraw_password;//�������
-	
+	private String salt; 
+	private String mobile_Phone;
+	private int status;
+	private int del_flag;
+	private String identity;
+	private String create_date;
+	private String update_date;
+	private String weiBoAccount;
+	private String weixinAccount;
+	private int headid;
+	private String invitationCode;
+	private String  withdraw_password;
 	private String invitedCode;
 	
 	@Id

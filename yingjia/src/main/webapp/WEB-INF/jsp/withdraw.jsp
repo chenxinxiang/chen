@@ -104,9 +104,6 @@ $(document).ready(function(){
 <c:if test="${list.status==4}">
 <span style="color: red">已冻结</span>
 </c:if>
-<c:if test="${list.status==5}">
-<span style="color: red">已解冻</span>
-</c:if>
 </td>
   <td>${list.create_date }</td>
   <td>
@@ -117,7 +114,7 @@ $(document).ready(function(){
   </td>
   <td>
   <c:if test="${list.status==0}">
-	   <form action="/yingjia/mem/Thaw" method="post">
+	   <form action="/yingjia/mem/Audit" method="post">
 	    <input type="hidden" name="id" value="${list.id }">
 	    <input type="submit" value="审核" style="color: blue;" style="width: 60px;height: 15px">
 	    </form>

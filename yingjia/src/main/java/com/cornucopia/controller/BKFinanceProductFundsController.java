@@ -26,7 +26,7 @@ public class BKFinanceProductFundsController {
 		model.addAttribute("list", list);
 		model.addAttribute("status",lstatus);
 		model.addAttribute("type",ltype);
-		return "";
+		return "BKFina";
 	}
 	
 	@RequestMapping("toupdate")
@@ -36,9 +36,23 @@ public class BKFinanceProductFundsController {
 		return fpf;
 	}
 	
-	@RequestMapping("aa")
+	@RequestMapping("update")
 	public String update(FinanceProductFunds fpf){
 		BKFinanceProductFundsService.update(fpf);
-		return "";
+		return "redirect:/BKFina/list";
+	}
+	
+	@RequestMapping("save")
+	public String save(FinanceProductFunds fpf){
+		BKFinanceProductFundsService.save(fpf);
+		return "redirect:/BKFina/list";
+	}
+	
+	@RequestMapping("/gettouzi")
+	@ResponseBody
+	public String gettouzi(int id){
+		String list=BKFinanceProductFundsService.gettouzi(id);
+		System.out.println(list);
+		return list;
 	}
 }

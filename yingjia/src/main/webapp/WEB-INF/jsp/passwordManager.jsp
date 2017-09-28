@@ -16,7 +16,7 @@
 </head>
 <body>
 	   <form class="form-horizontal" role="form" action="/yingjia/password/update">
-	   <input type="text" id="oldpassword" name="oldpassword" value="${password }">
+	   <input type="hidden" id="oldpassword" name="oldpassword" value="${password }">
 	   <input type="hidden" id="userName" name="userName" value="${user_name }">
 	   <input type="hidden" id="newps1" name="newps1">
 	   <div class="form-group">

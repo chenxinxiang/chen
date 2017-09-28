@@ -21,7 +21,6 @@ public class UserServiceImpl implements UserService {
 	@Autowired
 	private UserDaoImpl userDaoImpl;
 
-	// ��ѯ�û�������Ϣ
 	@Override
 		public List<Users> ListAll(Object... objects) {
 	        List<Users> User = userDaoImpl.ListAll();

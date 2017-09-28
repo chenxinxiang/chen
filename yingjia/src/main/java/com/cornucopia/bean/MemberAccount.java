@@ -4,6 +4,8 @@ import java.util.Date;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 //用户关联表
@@ -12,18 +14,24 @@ import javax.persistence.Table;
 public class MemberAccount {
 
 	private int id;//主键
-	
-	private int member_id;//用户id
-	
+	private Member member;
+	@ManyToOne
+	@JoinColumn(name="member_id", unique = true)
+	public Member getMember() {
+		return member;
+	}
+	public void setMember(Member member) {
+		this.member = member;
+	}
 	private int useable_balance;//可用余额
 	
 	private int imuseale_balance;//冻结余额
 	
 	private int total_profit;//累计收益
 	
-	private Date create_date;//创建时间
+	private String create_date;//创建时间
 	
-	private Date update_date;//修改时间
+	private String update_date;//修改时间
 	
 	private int bonus_amount;//红包金额
 	
@@ -42,12 +50,6 @@ public class MemberAccount {
 		this.id = id;
 	}
 	
-	public int getMember_id() {
-		return member_id;
-	}
-	public void setMember_id(int member_id) {
-		this.member_id = member_id;
-	}
 	public int getUseable_balance() {
 		return useable_balance;
 	}
@@ -66,17 +68,17 @@ public class MemberAccount {
 	public void setTotal_profit(int total_profit) {
 		this.total_profit = total_profit;
 	}
-	public Date getCreate_date() {
+	public String getCreate_date() {
 		return create_date;
 	}
-	public void setCreate_date(Date create_date) {
+	public void setCreate_date(String create_date) {
 		this.create_date = create_date;
 	}
-	public Date getUpdate_date() {
+	public String getUpdate_date() {
 		return update_date;
 	}
-	public void setUpdate_date(Date update_date) {
-		this.update_date = update_date;
+	public void setUpdate_date(String date) {
+		this.update_date = date;
 	}
 	public int getBonus_amount() {
 		return bonus_amount;

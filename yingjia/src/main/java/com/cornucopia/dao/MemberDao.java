@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.ibatis.annotations.Update;
 import org.hibernate.Hibernate;
 import org.hibernate.Query;
 import org.hibernate.Session;
@@ -12,12 +13,15 @@ import org.hibernate.Transaction;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import com.cornucopia.bean.AwardRecords;
 import com.cornucopia.bean.FinanciaPlanner;
 import com.cornucopia.bean.MembeWithdrawRecord;
 import com.cornucopia.bean.Member;
 import com.cornucopia.bean.MemberBankcards;
 import com.cornucopia.bean.MemberDepositRecord;
 import com.cornucopia.bean.Range;
+import com.cornucopia.bean.Subject;
+import com.cornucopia.bean.SubjectPurchaseRecord;
 
 @Component
 public class MemberDao {
@@ -43,7 +47,6 @@ public class MemberDao {
 			List<Member> listMember=session.createQuery(hql).list();
 			return listMember;
 		}
-		//拼接
 		public String listHql(String hql,Map map){
 			String qname=(String) map.get("qname");
 			String qmember_name=(String) map.get("qmember_name");
@@ -67,15 +70,12 @@ public class MemberDao {
 			}
 			return hql;
 		}
-		//账号详情
 		public Member selMemberOrder(int id) {
 		Session session=getSession();
 		 Member member=(Member) session.get(Member.class, id);
 		return member;
 	}
 
-
-		//会员理财师管理
 		public List<FinanciaPlanner> ListFinancial() {
 			Session session=getSession();
 			String hql="from FinanciaPlanner ";
@@ -86,14 +86,12 @@ public class MemberDao {
 		
 		
 		
-		//会员绑卡管理
 		public List<MemberBankcards>  cards(){
 			Session session=getSession();
 			 String hql="from MemberBankcards";
 			 List cardslist=session.createQuery(hql).list();
 			return cardslist;
 		}
-		//会员解绑银行卡
 		public void card(int id){
 			Session session=getSession();
 			String delflag="1";
@@ -103,7 +101,6 @@ public class MemberDao {
 			query.setInteger(1,id);
 			query.executeUpdate();
 		}
-		//模糊查询
 		public List<MemberBankcards> listCards(Map map){
 		Session session=getSession();
 		String hql="from MemberBankcards m where 0=0 ";
@@ -136,7 +133,7 @@ public class MemberDao {
 
 		
 		
-//		//删除集合中的一条数据
+//		//鍒犻櫎闆嗗悎涓殑涓�潯鏁版嵁
 //		public List Remove(int id) {    
 //		    List<MemberBankcards> students = this.cards();
 //		    for (MemberBankcards stu : students) {  
@@ -148,51 +145,14 @@ public class MemberDao {
 //			return students;
 //		}
 //		
-//		//付息计划管理
-//		//subject serial_no==合同编号 type==标的类型 name==标的名称
-//		//amount==标的金额 bought==已购人数  period==标的周期  delflag=募集中 ==1以结束  exper
-//		public List<Subject>SubjectAll(){
-//			Session session=getSession();
-//			String hql="from Subject";
-//			List listAll=session.createQuery(hql).list();
-//			return listAll;
-//		}
-//		 public List<Subject> selSubject(Map map){
-//				Session session=getSession();
-//				String hql="from Subject where 0=0 ";
-//				hql=SubjectHql(map, hql);
-//				List<Subject> subjectList=session.createQuery(hql).list();
-//				return subjectList;
-//			}
-//			
-//			public String SubjectHql(Map map,String hql){
-//				String qname=(String) map.get("qname");
-//				String qstatus=(String) map.get("qstatus");
-//				String qtype=(String) map.get("qtype");		
-//				if(qname!=null&&!qname.equals("")){
-//					hql+=" and name like '%"+qname+"%'";
-//				}
-//				if(qstatus!=null&&!qstatus.equals("")){
-//					hql+=" and status = '"+qstatus+"'";
-//				}
-//				if(qtype!=null&&!qtype.equals("")){
-//					hql+=" and type = '"+qtype+"'";
-//				}if(qname==null||qstatus==null||qtype==null){
-//					hql+=" 0=0 ";
-//				}
-//				return hql;
-//			}
-//		
-//			
-			//充值管理
-			//充值显示
+		
+		
 		public List<MemberDepositRecord> Record(){
 			Session session=getSession();
 			String hql="from MemberDepositRecord where 0=0";
 			List list=session.createQuery(hql).list();
 			return list;
 		}
-		//充值模糊查询
 		public List<MemberDepositRecord> listRecord(Map map){
 		Session session=getSession();
 		String hql="from MemberDepositRecord m where 0=0 ";
@@ -227,7 +187,6 @@ public class MemberDao {
 	
 	
 	
-	//提现管理
 		public List<MembeWithdrawRecord> Wrecord(){
 			Session session=getSession();
 			String hql="from MembeWithdrawRecord";
@@ -235,17 +194,24 @@ public class MemberDao {
 			return list;
 		}
 		
-		//解冻
 		public void Thaw(int id){
 			Session session=getSession();
-			Transaction trans=session.beginTransaction();
-			String hql="update MembeWithdrawRecord user set user.status='1' where user.id="+id;
-			Query queryupdate=session.createQuery(hql);
-			int ret=queryupdate.executeUpdate();
-			trans.commit();
+			String status="1";  
+			String hql="update MembeWithdrawRecord w set w.status=? where w.id=?";
+			Query query= session.createQuery(hql);
+			 query.setString(0, status);
+			 query.setInteger(1, id);
+			 query.executeUpdate();
 		}
-	//提现管理
-	//模糊查询
+		public void Audit(int id){
+			Session session=getSession();
+			String status="1";  
+			String hql="update MembeWithdrawRecord w set w.status=? where w.id=?";
+			Query query= session.createQuery(hql);
+			 query.setString(0, status);
+			 query.setInteger(1, id);
+			 query.executeUpdate();
+		}
 		public List<MembeWithdrawRecord> withdrawMap(Map map){
 			String hql="from MembeWithdrawRecord m where 0=0 ";
 			hql=withdrawHql(map, hql);
@@ -254,7 +220,6 @@ public class MemberDao {
 			return membeWithdrawRecordList;
 		}
 		
-		//条件查询
 		public String withdrawHql(Map map,String hql){
 			String qmember_name=(String) map.get("qmember_name");
 			String qmobile_Phone=(String) map.get("qmobile_Phone");
@@ -279,7 +244,7 @@ public class MemberDao {
 			return hql;
 		}
 //		
-//		//邀请显示
+//		//閭�鏄剧ず
 //		public List<AwardRecords> Listinvite(){
 //			Session session=getSession();
 //			String hql="from AwardRecords where 0=0";
@@ -287,7 +252,7 @@ public class MemberDao {
 //			return list;
 //		}
 //		
-//		//邀请模糊查询
+//		//閭�妯＄硦鏌ヨ
 //		public List<MembeWithdrawRecord> inviteMap(Map map){
 //			String hql="from AwardRecords m where 0=0 ";
 //			hql=inviteHql(map, hql);
@@ -324,7 +289,7 @@ public class MemberDao {
 //			return hql;
 //		}
 //		
-//		//邀请奖励记录
+//		//閭�濂栧姳璁板綍
 //		public Member Awar(int id){
 //			Session session=getSession();
 //			Member Award=(Member)session.get(Member.class, id);
@@ -367,7 +332,6 @@ public class MemberDao {
 			return listrange;
 		}
 		
-		//条件查询
 		public String listHql(Map map,String sql){
 			String qmember_name=(String) map.get("qmember_name");
 			String qmobile_Phone=(String) map.get("qmobile_Phone");
@@ -387,7 +351,6 @@ public class MemberDao {
 			if(qinvitedCode!=null&&!qinvitedCode.equals("")){
 				sql+=" and invitedCode like '%"+qinvitedCode+"%'";
 			}
-			//注册
 			if(qtype!=null&&!qtype.equals("")){
 				if(qtype.equals("2")){
 					sql+=" and tt.enroll ='2'";
@@ -395,7 +358,6 @@ public class MemberDao {
 					sql+=" and tt.enroll !='2'";
 				}
 			}
-			//类型
 			if(qisAward!=null&&!qisAward.equals("")){
 				if(qisAward.equals("2")){
 					sql+=" and tt.invest ='2'";
@@ -405,5 +367,215 @@ public class MemberDao {
 				}
 			return sql;
 		}
+		
+		//付息主页面显示
+				public List<Subject> SubMap(Map map){
+					Session session=getSession();
+					String hql="from Subject where 0=0 ";
+					hql=listHql(map, hql);
+					List<Subject> subjectList=session.createQuery(hql).list();
+					return subjectList;
+				}
+				
+				public List<SubjectPurchaseRecord> listRange(Map map) {
+					Session session = getSession();
+					 String sql="select * from(select s1.serial_no,s1.type,s1.name,s1.amount,SUM(s2.amount*s2.pay_interest_times) sumamount,s1.bought,s1.period,s1.year_rate,s1.status,s1.exper_status,s1.id from subject s1 left join subject_purchase_record s2 on s1.id=s2.subject_id group by s1.serial_no,s1.type,s1.name,s1.amount,s1.bought,s1.period,s1.year_rate,s1.status,s1.exper_status,s1.id)t where 0=0 ";
+					 sql=SubHql(map, sql);
+					 List list = session.createSQLQuery(sql).list();
+			        List<SubjectPurchaseRecord> listrange=new ArrayList<SubjectPurchaseRecord>();
+			        for(int i=0;i<list.size();i++){
+			        	Object[] obj=(Object[])list.get(i);
+			        	SubjectPurchaseRecord subjectPurchaseRecord=new SubjectPurchaseRecord();
+			        	
+			        	   Subject subject=new Subject();
+			        	   
+			        	   subject.setSerial_no(obj[0].toString());
+			        	   subject.setType(Integer.parseInt(obj[1].toString()));
+			        	   subject.setName(obj[2].toString());
+			        	   subject.setAmount((int)Float.parseFloat(obj[3].toString()));
+			        	   subject.setBought(Integer.parseInt(obj[5].toString()));
+			        	   subject.setPeriod(Integer.parseInt(obj[6].toString()));
+			        	   subject.setYear_rate((int)Float.parseFloat(obj[7].toString()));
+			        	   subject.setStatus(Integer.parseInt(obj[8].toString()));
+			        	   subject.setExper_status(Integer.parseInt(obj[9].toString()));
+			        	   subject.setId(Integer.parseInt(obj[10].toString()));
+			        	   int ams;
+			        	   if(obj[4]==null){
+			        		   ams=0;
+			        	   }else{
+			        		   ams=(int)Float.parseFloat(obj[4].toString());
+			        	   }
+			        	  subjectPurchaseRecord.setAmount(ams);
+			        	  subjectPurchaseRecord.setSubject(subject);
+			              listrange.add(subjectPurchaseRecord);
+			        }
+			        
+					return listrange;
+				}
+				//条件查询
+				public String SubHql(Map map,String sql){
+					String qname=(String) map.get("qname");
+					String qstatus=(String) map.get("qstatus");
+					String qtype=(String) map.get("qtype");		
+					if(qname!=null&&!qname.equals("")){
+						sql+=" and name like '%"+qname+"%'";
+					}
+					if(qstatus!=null&&!qstatus.equals("")){
+						int stat=Integer.parseInt(qstatus);
+				    	   sql+=" and t.status ="+qstatus;
+					}
+					if(qtype!=null&&!qtype.equals("")){
+						int typ=Integer.parseInt(qtype);
+				    	   sql+=" and t.type ="+typ;
+					}
+					return sql;
+				}
+				
+				//体验金付息
+				//点击体验金付息按钮显示购买信息
+				public List<SubjectPurchaseRecord> getById(int id){
+					Session session=getSession();
+					String hql="from SubjectPurchaseRecord where subject_id="+id;
+					List<SubjectPurchaseRecord> list=session.createQuery(hql).list();
+					return list;
+				}
+				
+				//付息计划
+				//点击还款按钮进行还款操作,状态-->已还款，按钮--->已还款
+				public void update(int id){
+					Session session=getSession();
+					String ispayment="1";  
+					String hql="update SubjectPurchaseRecord w set w.ispayment=? where w.id=?";
+					Query query= session.createQuery(hql);
+					 query.setString(0, ispayment);
+					 query.setInteger(1, id);
+					 query.executeUpdate();
+				}
+				//显示付息信息
+				public List<SubjectPurchaseRecord> listAll(int id){
+					Session session=getSession();
+					String hql="from SubjectPurchaseRecord where subject_id="+id;
+					List<SubjectPurchaseRecord> list=session.createQuery(hql).list();
+					return list;
+				}
+				public String getHql(Map map,String hql){
+//					String subject_id=map.get("subject_id").toString();
+					int subject_id=(int)map.get("subject_id");
+					System.out.println(subject_id);
+					if(subject_id!=0){
+						hql+=" and s.subject.id="+subject_id;
+					}
+					return hql;
+				}
+				//点击还款按钮进行还款操作,状态-->已还款，按钮--->已还款
+				public void updateFuXi(int id){
+					Session session=getSession();
+					String ispayment="1";  
+					String hql="update SubjectPurchaseRecord w set w.ispayment=? where w.id=?";
+					Query query= session.createQuery(hql);
+					 query.setString(0, ispayment);
+					 query.setInteger(1, id);
+					 query.executeUpdate();
+				}
+				
+				
+				//邀请显示
+				public List<Range> ListRangeAll2(Map map) {
+					Session session = getSession();
+			 String sql="select * from "
+			 		+ "(select mobile_Phone,member_name,invitationCode,invitedCode,sum(invest_amount) amount,invitingid,"
+			 		+ "case when max(enroll)=0 then '0' when max(enroll)=2 then '2' when max(enroll)=1 then '1'else '0' end enroll,"
+			 		+ "case when max(invest)=0 then '0' when max(invest)=2 then'2' when max(invest)=1 then'1'else '0' end invest,max(create_date) create_date from"
+			 		+ "(select  m.mobile_Phone,m.member_name,m.invitationCode,m.invitedCode,mm.invest_amount, a.invitingid,"
+			 		+ "case when a.type=0 and a.isAward=1 then '2' when a.type=0 and a.isAward!=1 then '1' else '0' end enroll,"
+			 		+ "case when a.type=1  and a.isAward=1 then '2' when a.type=1  and a.isAward!=1 then '1' else '0' end invest,m.create_date "
+			 		+ "from award_records a left join member m on a.invitingid=m.id left join member_account mm on m.id=mm.member_id)t "
+			 		+ "group by t.mobile_Phone,t.member_name,t.invitationCode,t.invitedCode)tt where 0=0 ";
+		      sql=listHql2(map,sql);
+					  List list=session.createSQLQuery(sql).list();
+			          List<Range> listrange=new ArrayList<Range>();
+			        for(int i=0;i<list.size();i++){
+			        	Object[] obj=(Object[])list.get(i);
+			        	   Range range=new Range();
+			               range.setMobile_Phone(obj[0].toString());
+			               range.setMember_name(obj[1].toString());
+			               range.setInvitationCode(obj[2].toString());
+			               range.setInvitedCode(obj[3].toString());
+			               int amous=0;
+			        	   if(obj[4]==null){
+			        		   amous=0;
+			        	   }else{
+			        		   amous=(int)Float.parseFloat(obj[4].toString());
+			        	   }
+			               range.setAmount(amous);
+			               range.setInvitingid(Integer.parseInt(obj[5].toString()));
+			               System.out.println("Id:-----"+obj[5].toString());
+			               range.setType(obj[6].toString());
+			               range.setIsAward(obj[7].toString());
+			               range.setAddTime(obj[8].toString());
+			              listrange.add(range);
+			        }
+			        
+					return listrange;
+				}
+				
+				//条件查询
+				public String listHql2(Map map,String sql){
+					String qmember_name=(String) map.get("qmember_name");
+					String qmobile_Phone=(String) map.get("qmobile_Phone");
+					String qinvitationCode=(String) map.get("qinvitationCode");
+					String qinvitedCode=(String) map.get("qinvitedCode");
+					String qtype=(String) map.get("qtype");
+					String qisAward=(String) map.get("qisAward");
+					if(qmember_name!=null&&!qmember_name.equals("")){
+						sql+=" and member_name like '%"+qmember_name+"%'";
+					}
+					if(qmobile_Phone!=null&&!qmobile_Phone.equals("")){
+						sql+=" and mobile_Phone like '%"+qmobile_Phone+"%'";
+					}
+					if(qinvitationCode!=null&&!qinvitationCode.equals("")){
+						sql+=" and invitationCode like '%"+qinvitationCode+"%'";
+					}
+					if(qinvitedCode!=null&&!qinvitedCode.equals("")){
+						sql+=" and invitedCode like '%"+qinvitedCode+"%'";
+					}
+					//注册
+					if(qtype!=null&&!qtype.equals("")){
+						if(qtype.equals("2")){
+							sql+=" and tt.enroll ='2'";
+						}else{
+							sql+=" and tt.enroll !='2'";
+						}
+					}
+					//类型
+					if(qisAward!=null&&!qisAward.equals("")){
+						if(qisAward.equals("2")){
+							sql+=" and tt.invest ='2'";
+					   	   }else{
+					   		sql+=" and tt.invest !='2'";
+					   	   }
+						}
+					return sql;
+				}
+				//奖励记录
+				//被邀请人信息
+				public List <AwardRecords> Reward1(int id){
+					Session session=getSession();
+					String sql="select mobile_Phone,invitedCode from member where id in"
+							+ "(select a.byinvitingid from member m , award_records a where a.invitingid=m.id and invitingid='"+id+"')";
+					List list=session.createSQLQuery(sql).list();
+					return list;
+				}
+				//邀请人信息
+				public List <AwardRecords>  Reward2(int id){
+					Session session=getSession();
+					String sql="select mobile_Phone ,a.type,a.addTime,"
+							+ "a.amount from member m,award_records a where m.id=a.invitingid and a.invitingid="+id;
+					List list=session.createSQLQuery(sql).list();
+					return list;
+				}
+
+
+
 		
 }

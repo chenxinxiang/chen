@@ -13,7 +13,6 @@ import com.cornucopia.service.NewsService;
 @Transactional
 public class NewsServiceImpl implements NewsService{
 	
-	//资讯类别
 		@Autowired
 		private NewsDao newsDao;
 	
@@ -29,8 +28,8 @@ public class NewsServiceImpl implements NewsService{
 			return this.newsDao.listNewsTypeAll();	
 		}
 		
-		public List<News> listNewsAll(){
-			return this.newsDao.listNewsAll();
+		public List<News> listNewsAll(String title,String typeid){
+			return this.newsDao.listNewsAll(title, typeid);
 		}
 		
 		public void updateNewsType(NewsType newsType){
@@ -55,11 +54,4 @@ public class NewsServiceImpl implements NewsService{
 			this.newsDao.deleteNews(ns);	
 		}
 		
-		public List<News> newsList(String title){
-			return this.newsDao.newsList(title);
-		}
-		
-		public List<News> newsListTo(String name){
-			return this.newsDao.newsListTo(name);
-		}
 }

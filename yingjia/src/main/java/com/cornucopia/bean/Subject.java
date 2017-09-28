@@ -11,60 +11,38 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="subject")//�����
+@Table(name="subject")//锟斤拷锟斤拷锟�
 public class Subject {
-            private int id;//����
-            private String serial_number;//��ˮ��
-            private String serial_no;//��ͬ��
-            private String name;//�������
-            private int type;//�������
-            private int status;//���״̬
-            private int floor_amount;//��Ͷ���
-            private int amount;//��Ľ��
-            private int first_id=1;//ʼ��id
-            private int parent_id=1;//����id
-            private int period;//�������
-            private String purpose;//���Ŀ��
-            private Date raise_start;//ļ����ʼ
-            private Date raise_end;//ļ������
-            private int refund_way;//���ʽ
-            private int safeGuard_way;//���Ϸ�ʽ
-            private Date start_date;//��Ŀ�ʼ����
-            private Date end_date;//��Ľ�������
-            private int year_rate;//�껯��
-            private String comment;//��Ʒ����
-            private int folder_id;//�ļ���id
-            private int delflag;//�Ƿ�ɾ��
-            private Date update_date;//��������
-            private Date create_date;//��������
-            private String borrowername;//���������
-            private int borrowerid;//�����id
-            private int bought;//�ѹ�����
-            private String projectDetails;//��Ŀ����
-            private String safetyControl;//��ȫ����
-            private int exper_status;//������Ƿ���Թ���0����1���ǣ�
-
-            private Set<SubjectBbinPurchassRecord> SubjectBbinPurchassRecord = new HashSet<SubjectBbinPurchassRecord>();
-            private Set<SubjectPurchaseRecord> subjectPurchaseRecord = new HashSet<SubjectPurchaseRecord>();
-            
-            @OneToMany(cascade = CascadeType.ALL,mappedBy="subject")
-    		public Set<SubjectBbinPurchassRecord> getSubjectBbinPurchassRecord() {
-    			return SubjectBbinPurchassRecord;
-    		}
-
-    		public void setSubjectBbinPurchassRecord(Set<SubjectBbinPurchassRecord> subjectBbinPurchassRecord) {
-    			SubjectBbinPurchassRecord = subjectBbinPurchassRecord;
-    		}
-    		
-    		@OneToMany(mappedBy="subject")
-    		public Set<SubjectPurchaseRecord> getSubjectPurchaseRecord() {
-    			return subjectPurchaseRecord;
-    		}
-
-    		public void setSubjectPurchaseRecord(Set<SubjectPurchaseRecord> subjectPurchaseRecord) {
-    			this.subjectPurchaseRecord = subjectPurchaseRecord;
-    		}
-            
+            private int id;//锟斤拷锟斤拷
+            private String serial_number;//锟斤拷水锟斤拷
+            private String serial_no;//锟斤拷同锟斤拷
+            private String name;//锟斤拷锟斤拷锟斤拷锟�
+            private int type;//锟斤拷锟斤拷锟斤拷锟�
+            private int status;//锟斤拷锟阶刺�
+            private int floor_amount;//锟斤拷投锟斤拷锟�
+            private int amount;//锟斤拷慕锟斤拷
+            private int first_id=1;//始锟斤拷id
+            private int parent_id=1;//锟斤拷锟斤拷id
+            private int period;//锟斤拷锟斤拷锟斤拷锟�
+            private String purpose;//锟斤拷锟侥匡拷锟�
+            private Date raise_start;//募锟斤拷锟斤拷始
+            private Date raise_end;//募锟斤拷锟斤拷锟斤拷
+            private int refund_way;//锟斤拷锟筋方式
+            private int safeGuard_way;//锟斤拷锟较凤拷式
+            private Date start_date;//锟斤拷目锟绞硷拷锟斤拷锟�
+            private Date end_date;//锟斤拷慕锟斤拷锟斤拷锟斤拷锟�
+            private int year_rate;//锟疥化锟斤拷
+            private String comment;//锟斤拷品锟斤拷锟斤拷
+            private int folder_id;//锟侥硷拷锟斤拷id
+            private int delflag;//锟角凤拷删锟斤拷
+            private Date update_date;//锟斤拷锟斤拷锟斤拷锟斤拷
+            private Date create_date;//锟斤拷锟斤拷锟斤拷锟斤拷
+            private String borrowername;//锟斤拷锟斤拷锟斤拷锟斤拷锟�
+            private int borrowerid;//锟斤拷锟斤拷锟絠d
+            private int bought;//锟窖癸拷锟斤拷锟斤拷
+            private String projectDetails;//锟斤拷目锟斤拷锟斤拷
+            private String safetyControl;//锟斤拷全锟斤拷锟斤拷
+            private int exper_status;//锟斤拷锟斤拷锟斤拷欠锟斤拷锟皆癸拷锟斤拷0锟斤拷锟斤拷1锟斤拷锟角ｏ拷
             @Id
             @GeneratedValue
 			public int getId() {

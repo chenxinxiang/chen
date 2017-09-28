@@ -1,8 +1,6 @@
 package com.cornucopia.controller;
 
-import java.util.Iterator;
 import java.util.List;
-import java.util.Set;
 
 import javax.annotation.Resource;
 
@@ -12,9 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.cornucopia.bean.Subject;
-import com.cornucopia.bean.SubjectPurchaseRecord;
 import com.cornucopia.service.SubjectService;
-import com.cornucopia.service.UserService;
 
 @Controller
 @RequestMapping("BKSubject")
@@ -32,9 +28,10 @@ public class BkSubjectController {
 		return "BkSubject";
 	}
 	
-	@RequestMapping("tosave")
-	public String tosave(){
-		return "tosave";
+	@RequestMapping("save")
+	public String save(Subject one){
+		backSubjectService.save(one);
+		return "redirect:/BKSubject/list";
 	}
 	
 	@RequestMapping("toupdate")
@@ -44,25 +41,22 @@ public class BkSubjectController {
 		return sub;
 	}
 	
+	@RequestMapping("update")
 	public String update(Subject sub){
 		backSubjectService.update(sub);
-		return "BkSubject";
+		return "redirect:/BKSubject/list";
 	}
 	
 	@RequestMapping("/getTotalMoney")
 	@ResponseBody
 	public double getTotalMoney(int id) {
-		Subject sub = this.backSubjectService.getById(id);
-		double num = 0;
-		Set<SubjectPurchaseRecord> sets = sub.getSubjectPurchaseRecord();
-		System.out.println(sets.size());
-//		if (sets.size() != 0) {
-//			Iterator<SubjectPurchaseRecord> records = sets.iterator();
-//			while (records.hasNext()) {
-//				SubjectPurchaseRecord rec = records.next();
-//				num += rec.getAmount();
-//			}
-//		}
+		double num = backSubjectService.getTotalMoney(id);
 		return num;
+	}
+	@RequestMapping("/gettouzi")
+	@ResponseBody
+	public String gettouzi(int id){
+		String list=backSubjectService.gettouzi(id);
+		return list;
 	}
 }

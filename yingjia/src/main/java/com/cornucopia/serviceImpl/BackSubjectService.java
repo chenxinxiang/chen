@@ -10,12 +10,15 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import com.cornucopia.bean.Subject;
+import com.cornucopia.bean.SubjectBbinPurchassRecord;
 import com.cornucopia.dao.BackSubjectDao;
 import com.cornucopia.service.SubjectService;
 
+import net.sf.json.JSONArray;
+
 @Component
 @Transactional
-public class BackSubjectService implements SubjectService{//��̨��Ʋ�Ʒ������
+public class BackSubjectService implements SubjectService{
 	
 	@Autowired
 	private BackSubjectDao BackSubjectDao;
@@ -65,7 +68,24 @@ public class BackSubjectService implements SubjectService{//��̨��Ʋ��
 	
 	@Override
 	public void save(Object object) {
-		// TODO Auto-generated method stub
+		Subject sub=(Subject)object;
+		Date dt=new Date();
+	     SimpleDateFormat matter1=new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
+	     SimpleDateFormat matter2=new SimpleDateFormat("yyyyMMddhhmmss");
+	     String str=matter1.format(dt);
+	     String nn=matter2.format(dt);
+	     try{
+	    	 sub.setCreate_date(matter1.parse(str));
+	    	 sub.setUpdate_date(matter1.parse(str));
+	     }catch(Exception e){
+	    	 
+	     }
+	     for(int i=0;i<4;i++){
+	    	 nn=nn+(int)Math.random()*10;
+	     }
+	     sub.setSerial_number(nn);
+	     
+		BackSubjectDao.save(sub);
 		
 	}
 
@@ -79,6 +99,31 @@ public class BackSubjectService implements SubjectService{//��̨��Ʋ��
 	public double getTotalMoney(int id) {
 		double num=BackSubjectDao.getTotalMoney(id);
 		return num;
+	}
+
+
+
+
+
+
+
+	@Override
+	public String gettouzi(int id) {
+		List<SubjectBbinPurchassRecord> list=BackSubjectDao.gettouzi(id);
+		JSONArray jlist=JSONArray.fromObject(list);
+		return jlist.toString();
+	}
+
+
+
+
+
+
+
+	@Override
+	public List list() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

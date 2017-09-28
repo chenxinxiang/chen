@@ -9,22 +9,22 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="Subject_bbin_purchass_record")//���������
+@Table(name="Subject_bbin_purchass_record")
 public class SubjectBbinPurchassRecord {
                
-	              private int id;//����
-	              private String serial_number;//��ˮ��
-	              private int amount;//������
-	              private String deal_ip;//����ip
+	              private int id;
+	              private String serial_number;
+	              private int amount;
+	              private String deal_ip;
 	              private Subject subject;
-	              private int member_id;//
+	              private int member_id;
 	              private int delflag;
 	              private Date create_date;
 	              private Date update_date;
-	              private int interest;//������Ϣ
-	              private int ispayment;//�Ƿ񻹿�
+	              private int interest;
+	              private int ispayment;
 	              private int pay_interest_times;
-	              private int last_profit_day;//����Ϣ��
+	              private int last_profit_day;
 	              
 	              public int getPay_interest_times() {
 					return pay_interest_times;
@@ -39,7 +39,7 @@ public class SubjectBbinPurchassRecord {
 					this.last_profit_day = last_profit_day;
 				}
 				@Id
-	              @GeneratedValue
+	            @GeneratedValue
 				public int getId() {
 					return id;
 				}
@@ -64,8 +64,8 @@ public class SubjectBbinPurchassRecord {
 				public void setDeal_ip(String deal_ip) {
 					this.deal_ip = deal_ip;
 				}
-				@ManyToOne
-				@JoinColumn(name="subject_id")
+			@ManyToOne
+			@JoinColumn(name="subject_id")
 			public Subject getSubject() {
 				return subject;
 			}

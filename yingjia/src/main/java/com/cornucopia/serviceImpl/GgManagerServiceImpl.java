@@ -6,112 +6,122 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
+import com.cornucopia.bean.AwardRecords;
 import com.cornucopia.bean.Pushnotice;
+import com.cornucopia.bean.Subject;
+import com.cornucopia.dao.Impl.GgManagerDaoImpl;
 import com.cornucopia.service.GgManagerDao;
 import com.cornucopia.service.GgManagerService;
 
 @Service
-public class GgManagerServiceImpl implements GgManagerService{
+public class GgManagerServiceImpl implements GgManagerService {
 
 	@Autowired
 	@Qualifier("ggManagerDaoImpl")
-	private GgManagerDao manager;
+	private GgManagerDaoImpl manager;
 	
-	//查询所有公告，新闻
-	public List  listSubject(){
+	public List<Pushnotice> listSubject(){
 		return manager.ListAll();
 }
-	//查询所有反馈意见表
 	
 	public List listfeedback() {
 		return manager.Feed();
 	}
 
-	public List  listPush_notice(String hql) {
+	public List<Pushnotice> listPush_notice(String hql) {
 		System.out.println("1");
 		return this.manager.list(hql);
 	}
 
-	//根据ID查询公告内容
 
 	public Pushnotice chakan(int id) {
 		return manager.chakan(id);
 	}
-	//编辑公告
 	public Pushnotice chakang(int id) {
 		return manager.chakan(id);
 	}
 
-	public List  chakan() {
+	public List<Pushnotice> chakan() {
 		return null;
 	}
 
-	public List  chakang() {
+	public List<Pushnotice> chakang() {
 		// TODO Auto-generated method stub
 		return null;
 	}
-	//添加
 		public void save(Object... objects) {
 			manager.save(objects);
 			System.out.println(objects);
 		}
     
 
-		public List  updatelist() {
+		public List<Pushnotice> updatelist() {
 			// TODO Auto-generated method stub
 			return null;
-		}
-		//修改
+		} 
 	public void updatelist(int id, String title, String content) {
 		this.manager.updatelist(id, title,content);
 
 	}
-	//红包统计
-	@Override
-	public List   listCop() {
-		// TODO Auto-generated method stub
-		return manager.ListCop();
-	}
-	//红包统计
-	@Override
-	public List  listCop1() {
-		// TODO Auto-generated method stub
-		return manager.ListCop1();
-	}
-     //收益统计
-	@Override
-	public List  listCop2() {
-		// TODO Auto-generated method stub
-		return manager.ListCop2();
+
+	public List<AwardRecords> ListCop(String creatTime,String endTime, int month) {
+		return manager.ListCop(creatTime, endTime,month);
 	}
 
-	@Override
-	public List  listCop3() {
-		// TODO Auto-generated method stub
-		return manager.ListCop3();
-	}
-	@Override
-	public List  listCop4() {
-		// TODO Auto-generated method stub
-		return manager.ListCop4();
+	public List<AwardRecords> ListCop1(String creatTime,String endTime, int month) {
+		return manager.ListCop1(creatTime, endTime,month);
 	}
 
-	@Override
-	public List  listCop5() {
-		// TODO Auto-generated method stub
-		return manager.ListCop5();
+	public List  ListCop2(String creatTime, String endTime, int month) {
+		return manager.ListCop2(creatTime, endTime,month);
 	}
 
-	@Override
-	public List  listCop6() {
-		// TODO Auto-generated method stub
-		return manager.ListCop6();
+	public List<Subject> ListCop3(String creatTime, String endTime, int month) {
+		return manager.ListCop3(creatTime, endTime,month);
 	}
 
-	@Override
-	public List  listCop7() {
-		// TODO Auto-generated method stub
-		return manager.ListCop7();
+	public List<Subject> ListCop4(String creatTime, String endTime, int month) {
+		return manager.ListCop4(creatTime, endTime,month);
+	}
+
+	public List  ListCop5(String creatTime,String endTime, int month) {
+		return manager.ListCop5(creatTime, endTime,month);
+	}
+
+	public List  ListCop6(String creatTime,String endTime, int month) {
+		return manager.ListCop6(creatTime, endTime,month);
+	}
+
+	public List  ListCop7(String creatTime,String endTime, int month) {
+		return manager.ListCop7(creatTime, endTime,month);
+	}
+
+	public List  ListCop8(String creatTime,String endTime, int month) {
+		return manager.ListCop8(creatTime, endTime,month);
+	}
+
+	public List  ListCop9(String creatTime, String endTime, int month) {
+		return manager.ListCop9(creatTime, endTime,month);
+	}
+
+	public List<Subject> ListCop10(String creatTime, String endTime, int month) {
+		return manager.ListCop10(creatTime, endTime,month);
+	}
+
+	public List<Subject> ListCop11(String creatTime, String endTime, int month) {
+		return manager.ListCop11(creatTime, endTime,month);
+	}
+
+	public List  ListCop12(String creatTime,String endTime, int month) {
+		return manager.ListCop12(creatTime, endTime,month);
+	}
+
+	public List  ListCop13(String creatTime,String endTime, int month) {
+		return manager.ListCop13(creatTime, endTime,month);
+	}
+
+	public List  ListCop14(String creatTime,String endTime, int month) {
+		return manager.ListCop14(creatTime, endTime,month);
 	}
 
 	

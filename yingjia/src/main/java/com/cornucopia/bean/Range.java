@@ -9,7 +9,7 @@ import javax.persistence.Table;
 @Table
 public class Range {
 	/**
-	 * 邀请奖励  值域
+	 * 閭�濂栧姳  鍊煎煙
 	 * @author ASUS
 	 *
 	 */
@@ -30,6 +30,8 @@ public class Range {
 		private String isAward;
 		
 		private String addTime;
+		
+		private int invitingid;
 		
 		@Id
 		@GeneratedValue
@@ -87,5 +89,13 @@ public class Range {
 		public void setAddTime(String addTime) {
 			this.addTime = addTime;
 		}
-
+		public int getInvitingid() {
+			return invitingid;
+		}
+		public void setInvitingid(int invitingid) {
+			this.invitingid = invitingid;
+		}
+		
+		
+		
 }

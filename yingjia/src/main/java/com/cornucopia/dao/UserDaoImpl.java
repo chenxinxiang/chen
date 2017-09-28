@@ -24,7 +24,6 @@ public class UserDaoImpl  {
 	public Session getSession() {
 		return sessionFactory.getCurrentSession();
 	}
-	// ��ѯ�û�����Ϣ
 	public List ListAll() {
 		Session session = getSession();
 		 StringBuffer buffer = new StringBuffer();
@@ -37,7 +36,6 @@ public class UserDaoImpl  {
 	}
 
 	
-	//����û����ѯ��Ϣ
 	public  Users getByName(String name) {
 		Session session=getSession();
 		String hql="from Users u where u.user_name='"+name+"'";

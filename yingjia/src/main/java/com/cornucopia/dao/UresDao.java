@@ -9,10 +9,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import com.cornucopia.bean.Pushnotice;
-
-
-
-
 @Component
 public class UresDao{
 

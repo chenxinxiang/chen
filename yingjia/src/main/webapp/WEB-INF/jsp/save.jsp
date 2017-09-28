@@ -8,9 +8,9 @@
 </head>
 <body>
 <form action="/yingjia/item/save" method="post" >
-         类别 <input  type="text"  id="content" name="content"  width="50px" height="50px">
+
+	类别: <input  type="text"  id="content" name="content" >
 	公告标题:<input type="text" id="title" name="title">
-	添加时间:<input type="text" id="update_Date" name="update_Date" >
 	<input type="submit" value="提交">
 	<from>
 	

@@ -93,7 +93,7 @@ $(document).ready(function(){
     </tr>
     <c:forEach items="${cardslist }" var="list" varStatus="stat">
 <tr> 
-<td>${stat.index+1 }</td> <td>${list.id }</td> <td>${list.member.mobile_Phone }</td>  <td>${list.member.name }</td>  <td>${list.member.identity }</td> 
+<td>${stat.index+1 }</td> <td>${list.id }</td> <td>${list.member.mobile_Phone }</td>  <td>${list.member.member_name }</td>  <td>${list.member.identity }</td> 
 <td>
 <c:choose>
 <c:when test="${list.type=='ZSYH'}">

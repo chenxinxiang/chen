@@ -36,9 +36,15 @@ public class NewsDao {
 		return listNewsTypeAll;
 	}
 	
-	public List<News> listNewsAll(){
+	public List<News> listNewsAll(String title,String typeid){
 		Session session=getSession();
-		String hql="from News";
+		String hql="from News where 0=0";
+		if(title!=null&&!"".equals(title)){
+			hql+="and title like '%"+title+"%'" ;
+		}
+		if(typeid!=null&&!"".equals(typeid)&&Integer.parseInt(typeid)!=-1){
+			hql+="and typeid = '"+typeid+"'";
+		}
 		List<News> listNewsAll=session.createQuery(hql).list();
 		return listNewsAll;
 	}
@@ -50,7 +56,6 @@ public class NewsDao {
 	
 	public void updateNews(News news){
 		Session session=getSession();
-		System.out.println("222");
 		session.update(news);		
 	}
 	
@@ -68,25 +73,8 @@ public class NewsDao {
 	
 	
 	public void deleteNews(News news){
-		System.out.println(news.getSort());
 		Session session=getSession();
 		session.delete(news);
 	}
 	
-	//根据title和类别进行模糊查询
-	public List<News> newsList(String title){
-		Session session=getSession();
-		String hql="from News n1 where n1.title like '%"+title+"%'";
-		System.out.println(hql);
-		List<News> newsList=session.createQuery(hql).list();
-		return newsList;
-	}
-	
-	public List<News> newsListTo(String name)	{
-		Session session=getSession();
-		String hql="from News where newsType.name like '%"+name+"%'";
-		System.out.println(hql);
-		List<News> newsList=session.createQuery(hql).list();
-		return newsList;
-	}
 }

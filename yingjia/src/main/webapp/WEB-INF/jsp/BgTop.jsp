@@ -29,7 +29,7 @@ $(function(){
 <body style="background:url(../BgAssets/images/topbg.gif) repeat-x;">
 
     <div class="topleft" align="center">
-   					啊啊啊
+   					盈+后台管理
     </div>
      
     

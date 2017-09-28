@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import com.cornucopia.bean.Subject;
+import com.cornucopia.bean.SubjectBbinPurchassRecord;
 import com.cornucopia.bean.SubjectPurchaseRecord;
 
 @Component
@@ -61,16 +62,20 @@ public class BackSubjectDao {
 	}
 	
 	public double getTotalMoney(int id) {
-		System.out.println(id);
 		Session session=getSession();
 		List<SubjectPurchaseRecord> list=session.createQuery("from SubjectPurchaseRecord where subject_id="+id).list();
 		double num=0;
-//		for(int i=0;i<list.size();i++){
-//			SubjectPurchaseRecord rec = list.get(i);
-//			num += rec.getAmount();
-//		}
-		System.out.println(list.size());
+		for(int i=0;i<list.size();i++){
+			SubjectPurchaseRecord rec = list.get(i);
+			num += rec.getAmount();
+		}
 		return num;
+	}
+	
+	public List<SubjectBbinPurchassRecord> gettouzi(int id){
+		Session session=getSession();
+		List<SubjectBbinPurchassRecord> list=session.createQuery("from SubjectPurchaseRecord where subject_id="+id).list();
+		return list;
 	}
 
 }

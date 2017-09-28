@@ -166,9 +166,16 @@ $(document).ready(function(){
     
     </div>
     
-    <form action="/yingjia/news/queryNews" method="post" style="text-align: center;">
-    	标题：<input type="text" name="title" placeholder="请输入标题"> 
-    	类别名称：<input type="text" name="name" placeholder="请输入类别名称">
+    <form action="/yingjia/news/listNewsAll" method="post" style="text-align: center;">
+    	标题：<input type="text" name="title" placeholder="请输入标题" style="font-size: medium;"> 
+     	类别名称：
+     	<select name="typeid">
+     			<option value="-1">请选择</option>
+     			<c:forEach items="${newsTypeList }" var="list">
+     				<option value="${list.id }">${list.name }</option>
+     			</c:forEach>
+     	
+     	</select>
     	<input type="submit" value="查询"> 
     </form>   
     
@@ -189,7 +196,7 @@ $(document).ready(function(){
         <th class="wrap">添加时间</th> 
         <th class="wrap">操作</th>    
         </tr>
-        </thead>
+      </thead>
         <tbody>
       <c:forEach items="${newsList }" var="news">  
         <tr>
@@ -206,8 +213,8 @@ $(document).ready(function(){
         <td class="wrap">${news.updTime}</td>
         <td class="wrap">${news.addTime}</td>    
         <td class="">            
-      <a href="/yingjia/news/deleteNews/${news.id }"> <span><img src="../BgAssets/images/t03.png" />删除</span></a>   <br>              
-		<a href="/yingjia/news/initData/${news.id }"> <span><img src="../BgAssets/images/t02.png" />修改</span></a>		       
+      <a href="/yingjia/news/deleteNews/${news.id }"> <span><img src="../BgAssets/images/t03.png" />删除</span></a>  <br>            
+	  <a href="/yingjia/news/initData/${news.id }"> <span><img src="../BgAssets/images/t02.png" />修改</span></a>		       
         </td> 
         </tr> 
        </c:forEach>

@@ -56,8 +56,11 @@
 		<!-- Shiro连接约束配置,即过滤链的定义 -->
 		<property name="filterChainDefinitions">
 			<value>
-				 /BgItem/BgUserPermission=perms[用户管理] 
+				 /BgItem/user=perms[用户管理] 
 				/BgItem/BgIndex= perms[固收类]
+				/memberRecord/listRecordAll= perms[钱包缴费记录]
+				/news/listTypeAll=perms[资讯分类] 
+				/news/listNewsAll= perms[咨询管理]
 				
 			</value>
 		</property>

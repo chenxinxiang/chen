@@ -2,7 +2,10 @@ package com.cornucopia.service;
 
 import java.util.List;
 
+import com.cornucopia.bean.AwardRecords;
 import com.cornucopia.bean.Pushnotice;
+import com.cornucopia.bean.Subject;
+
 
 public interface GgManagerDao {
 
@@ -10,29 +13,38 @@ public interface GgManagerDao {
 
 	public List Feed();
 	
-	//查询是否有该标题
 	public List<Pushnotice> list(String hql);
-	//根据id查询公告内容
 			public Pushnotice chakan(int id);
-	//编辑公告
 	public Pushnotice chakang(int id);
-	//添加
 		public void save(Object...objects);
-   //修改
 		public void updatelist(int id,String title,String content);
-		//红包统计
-		public List ListCop();
+		public List<AwardRecords> ListCop(String creatTime,String endTime, int month);
 
-		public List  ListCop1();
+		public List<AwardRecords> ListCop1(String creatTime,String endTime, int month);
 
-		public List  ListCop2();
+		public List ListCop2(String creatTime,String endTime, int month);
 
-		public List  ListCop3();
+		public List<Subject> ListCop3(String creatTime,String endTime, int month);
 		
-		public List  ListCop4();
-		public List  ListCop5();
+		public List<Subject> ListCop4(String creatTime,String endTime, int month);
+		public List ListCop5(String creatTime,String endTime, int month);
 
-		public List  ListCop6();
+		public List ListCop6(String creatTime,String endTime, int month);
 
-		public List  ListCop7();
+		public List ListCop7(String creatTime,String endTime, int month);
+
+		public List ListCop8(String creatTime,String endTime, int month);
+
+		public List ListCop9(String creatTime,String endTime, int month);
+
+		public List<Subject> ListCop10(String creatTime,String endTime, int month);
+
+		public List<Subject> ListCop11(String creatTime,String endTime, int month);
+
+		public List ListCop12(String creatTime,String endTime, int month);
+
+		public List ListCop13(String creatTime,String endTime, int month);
+
+		public List ListCop14(String creatTime,String endTime, int month);
+
 }

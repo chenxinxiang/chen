@@ -21,11 +21,6 @@
 			$("#ltype").val(-1);
 			$("#lstatus").val(-1);
 		})
-		$("#add").click(function(){
-			$("#form form input").each(function(){  
-                $(this).val('');
-            });
-		});
 		window.alert = function(name){
 			var iframe = document.createElement("IFRAME");
 			iframe.style.display="none";
@@ -43,12 +38,29 @@
 		document.forms[1].action="/yingjia/BKSubject/save";
 		document.forms[1].submit();
 	}
+	function btn(id){
+		$.getJSON(
+				"/yingjia/BKSubject/gettouzi?id="+id,
+				function(list){
+					$("#tt").empty();
+					$("#tt").append("<tr><th>序号</th><th>流水号</th><th>购买金额</th></tr>");
+					for(var i=0;i<list.length;i++){
+						$("#tt").append("<tr><td>"+(i+1)+"</td><td>"+list[i].serial_number+"</td><td>"+list[i].amount+"</td></tr>");
+					}
+				}
+				)
+		
+	}
+	function sub3(){
+		document.forms[2].action="/yingjia/BKSubject/update";
+		document.forms[2].submit();
+	}
 	function sub2(id){
 		$.getJSON(
 				"/yingjia/BKSubject/toupdate?id="+id,
 				function(one){
-					if(one.status==1){
-						alert("该标已在募集中，不可修改");
+					if(one.status!=0){
+						alert("该标已募集，不可修改");
 						window.location.reload();
 					}
 					$("#name").val(one.name);
@@ -106,7 +118,24 @@
 	border: 1px solid #EEE;
 	padding: 12px;
 }
+#tt {
+	width: 100%;
+	border-collapse: collapse;
+	border: 1px solid #EEE;
+	font-size: 14px;
+	margin-top: 10px;
+}
 
+#tt th {
+	background: #EEE;
+	border: 1px solid #CCC;
+	padding: 8px;
+}
+
+#tt td {
+	border: 1px solid #EEE;
+	padding: 12px;
+}
 input {
 	border-radius: 6px;
 	padding: 6px 10px;
@@ -219,12 +248,7 @@ select {
 									<td align="right">保障方式:</td>
 									<td><select name="safetyControl">
 											<option value="0">企业担保</option>
-											
 									</select><br></td>
-								</tr>
-								<tr>
-									<td align="right"></td>
-									<td></td>
 								</tr>
 							</table>
 							<div class="form-group" align="center">
@@ -324,6 +348,29 @@ select {
 		</div>
 		<!-- /.modal -->
 	</div>
+	<div class="modal fade" id="myModal3" tabindex="-1" role="dialog"
+		aria-labelledby="myModalLabel" aria-hidden="true">
+		<div class="container" style="margin-top: 50px;">
+			<div class="row">
+				<div class="col-lg-4 col-lg-offset-4">
+					<div class="panel panel-default">
+						<div class="panel-heading">
+							<h3 class="panel-title">
+								查看投资
+								<button type="button" class="close" data-dismiss="modal"
+									aria-hidden="true">&times;</button>
+							</h3>
+						</div>
+						<table border="1" id="tt">
+						
+						</table>
+						<div class="panel-body"></div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- /.modal -->
+	</div>
 	<table border="1" id="tb">
 		<tr>
 			<th>序号</th>
@@ -357,8 +404,9 @@ select {
 					$.post("/yingjia/BKSubject/getTotalMoney", {
 						id : id
 					}, function(data) {
+						document.write(data+"元");
 					});
-					document.write(num1+"元");
+					
 				</script></td>
 				<td>${e.period }天</td>
 				<td>${e.floor_amount }元</td>
@@ -372,7 +420,8 @@ select {
 				<td><input type="button" value="编辑/查看" class="btn"
 					onclick="sub2(${e.id});" data-toggle="modal"
 					data-target="#myModal2"><input type="button" value="查看投资"
-					class="btn"></td>
+					class="btn" data-toggle="modal"
+					data-target="#myModal3" onclick="btn(${e.id})"></td>
 			</tr>
 		</c:forEach>
 	</table>
