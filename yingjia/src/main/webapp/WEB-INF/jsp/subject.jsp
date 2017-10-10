@@ -181,7 +181,7 @@
 								
 						</li>
 						<li class="five">
-							<a class="abtn" href="/yingjia/item2/frontShopping" tppabs="http://pro.ying158.com/subject/subjectContent/1612">购买</a>
+							<a class="abtn" href="/yingjia/product/toBuy?id=1628" tppabs="http://pro.ying158.com/subject/subjectContent/1612">购买</a>
 						</li>
 					</ul>
 					<ul class="tbList">
@@ -215,7 +215,7 @@
 								
 						</li>
 						<li class="five">
-							<a class="abtn" href="/yingjia/item2/frontShopping" tppabs="http://pro.ying158.com/subject/subjectContent/1611">购买</a>
+							<a class="abtn" href="/yingjia/product/toBuy?id=1637" tppabs="http://pro.ying158.com/subject/subjectContent/1611">购买</a>
 						</li>
 					</ul>
 					<ul class="tbList">
@@ -249,7 +249,7 @@
 								
 						</li>
 						<li class="five">
-							<a class="abtn" href="/yingjia/item2/frontShopping" tppabs="http://pro.ying158.com/subject/subjectContent/1610">购买</a>
+							<a class="abtn" href="/yingjia/product/toBuy?id=1638" tppabs="http://pro.ying158.com/subject/subjectContent/1610">购买</a>
 						</li>
 					</ul>
 					<ul class="tbList">
@@ -283,7 +283,7 @@
 								
 						</li>
 						<li class="five">
-							<a class="abtn" href="/yingjia/item2/frontShopping" tppabs="http://pro.ying158.com/subject/subjectContent/1609">购买</a>
+							<a class="abtn" href="/yingjia/product/toBuy?id=1628" tppabs="http://pro.ying158.com/subject/subjectContent/1609">购买</a>
 						</li>
 					</ul>
 	<!-- 异步内容结束 -->

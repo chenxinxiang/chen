@@ -8,12 +8,12 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
-//ÓÃ»§¹ØÁª±í
+//ï¿½Ã»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 @Entity
 @Table(name="member_account")
 public class MemberAccount {
 
-	private int id;//Ö÷¼ü
+	private int id;//ï¿½ï¿½ï¿½ï¿½
 	private Member member;
 	@ManyToOne
 	@JoinColumn(name="member_id", unique = true)
@@ -23,23 +23,26 @@ public class MemberAccount {
 	public void setMember(Member member) {
 		this.member = member;
 	}
-	private int useable_balance;//¿ÉÓÃÓà¶î
+	private double useable_balance;//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	
-	private int imuseale_balance;//¶³½áÓà¶î
+	private int imuseale_balance;//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	
-	private int total_profit;//ÀÛ¼ÆÊÕÒæ
+	private int total_profit;//ï¿½Û¼ï¿½ï¿½ï¿½ï¿½ï¿½
 	
-	private String create_date;//´´½¨Ê±¼ä
+	private Date create_date;//ï¿½ï¿½ï¿½ï¿½Ê±ï¿½ï¿½
 	
-	private String update_date;//ÐÞ¸ÄÊ±¼ä
+	private Date update_date;//ï¿½Þ¸ï¿½Ê±ï¿½ï¿½
 	
-	private int bonus_amount;//ºì°ü½ð¶î
+	private int bonus_amount;//ï¿½ï¿½ï¿½ï¿½ï¿½
 	
-	private int invest_amount;//Í¶×Ê×Ü¶î
+	private double invest_amount;//Í¶ï¿½ï¿½ï¿½Ü¶ï¿½
 	
-	private int delflag;// É¾³ý'0'
+	private int delflag;// É¾ï¿½ï¿½'0'
 	
-	private int bbin_amount;//ÌåÑé½ð
+	private int bbin_amount;//ï¿½ï¿½ï¿½ï¿½ï¿½
+	
+	
+	
 	
 	@Id
 	@GeneratedValue
@@ -50,11 +53,11 @@ public class MemberAccount {
 		this.id = id;
 	}
 	
-	public int getUseable_balance() {
+	public double getUseable_balance() {
 		return useable_balance;
 	}
-	public void setUseable_balance(int useable_balance) {
-		this.useable_balance = useable_balance;
+	public void setUseable_balance(double d) {
+		this.useable_balance = d;
 	}
 	public int getImuseale_balance() {
 		return imuseale_balance;
@@ -68,16 +71,16 @@ public class MemberAccount {
 	public void setTotal_profit(int total_profit) {
 		this.total_profit = total_profit;
 	}
-	public String getCreate_date() {
+	public Date getCreate_date() {
 		return create_date;
 	}
-	public void setCreate_date(String create_date) {
+	public void setCreate_date(Date create_date) {
 		this.create_date = create_date;
 	}
-	public String getUpdate_date() {
+	public Date getUpdate_date() {
 		return update_date;
 	}
-	public void setUpdate_date(String date) {
+	public void setUpdate_date(Date date) {
 		this.update_date = date;
 	}
 	public int getBonus_amount() {
@@ -86,11 +89,11 @@ public class MemberAccount {
 	public void setBonus_amount(int bonus_amount) {
 		this.bonus_amount = bonus_amount;
 	}
-	public int getInvest_amount() {
+	public double getInvest_amount() {
 		return invest_amount;
 	}
-	public void setInvest_amount(int invest_amount) {
-		this.invest_amount = invest_amount;
+	public void setInvest_amount(double d) {
+		this.invest_amount = d;
 	}
 	public int getDelflag() {
 		return delflag;

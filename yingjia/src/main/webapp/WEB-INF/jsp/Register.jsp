@@ -102,6 +102,7 @@
 
 </script>    <div class="proMain">
     	</div>
+    	<form action="/yingjia/font/sureFontSign" method="post">
 	<div class="row register">
 		<div class="title">
 			<div class="left">
@@ -119,7 +120,7 @@
                 用户名
             </div>
             <div class="rInput">
-                <input type="text" placeholder="请输入用户名" id="userName" name="youname" class="form-control textInput youname" />（需用实名注册）<span class="errorInfo">用户名不能为空</span>
+                <input type="text" placeholder="请输入用户名" id="userName" name="member_name" class="form-control textInput youname" />（需用实名注册）<span class="errorInfo">用户名不能为空</span>
             </div>
         </div>
 		<div class="item">
@@ -127,27 +128,27 @@
 				手机号
 			</div>
 			<div class="rInput">
-				<input type="text" placeholder="请输入手机号" id="phone" name="phone" class="form-control textInput phone" /><span class="errorInfo">手机号码不能为空</span>
+				<input type="text" placeholder="请输入手机号" id="phone" name="mobile_Phone" class="form-control textInput phone" /><span class="errorInfo">手机号码不能为空</span>
 			</div>
 		</div>
-		 <div class="item">
-            <div class="rLabel">
-                图形验证码
-            </div>
-            <div class="rInput">
-                <input type="text" placeholder="图片验证码" id="picCode" class="form-control textInput imgcode" />
-                <img src="../BfAssets/authImage.jpg" tppabs="http://pro.ying158.com/authImage" id="captcha" onclick="updcaptcha('')" title="看不清楚,点击换一张" alt="看不清楚,点击换一张" class="picCodeImg">
-                <span class="errorInfo">请输入图形验证码</span>
-            </div>
-        </div>
-		<div class="item">
-			<div class="rLabel">
-				验证码
-			</div>
-			<div class="rInput">
-				<input type="text" placeholder="请输入验证码" id="vCode" name="vCode" class="form-control textInput code" /><button class="btn vCodeBtn" onclick="sendMessage(90)" id="btnSendCode">获取验证码</button><span class="errorInfo"></span>
-			</div>
-		</div>
+<!-- 		 <div class="item"> -->
+<!--             <div class="rLabel"> -->
+<!--                 图形验证码 -->
+<!--             </div> -->
+<!--             <div class="rInput"> -->
+<!--                 <input type="text" placeholder="图片验证码" id="picCode" class="form-control textInput imgcode" /> -->
+<!--                 <img src="../BfAssets/authImage.jpg" tppabs="http://pro.ying158.com/authImage" id="captcha" onclick="updcaptcha('')" title="看不清楚,点击换一张" alt="看不清楚,点击换一张" class="picCodeImg"> -->
+<!--                 <span class="errorInfo">请输入图形验证码</span> -->
+<!--             </div> -->
+<!--         </div> -->
+<!-- 		<div class="item"> -->
+<!-- 			<div class="rLabel"> -->
+<!-- 				验证码 -->
+<!-- 			</div> -->
+<!-- 			<div class="rInput"> -->
+<!-- 				<input type="text" placeholder="请输入验证码" id="vCode" name="vCode" class="form-control textInput code" /><button class="btn vCodeBtn" onclick="sendMessage(90)" id="btnSendCode">获取验证码</button><span class="errorInfo"></span> -->
+<!-- 			</div> -->
+<!-- 		</div> -->
 		<div class="item">
 			<div class="rLabel">
 				登录密码
@@ -204,9 +205,10 @@
 				&nbsp;
 			</div>
 			<div class="rInput">
-				<button class="btn registBtn submit">立即注册</button>
+				<input type="submit" value="立即注册">
 			</div>
 		</div>
+		</form>
 		<div class="item">
 			<div class="rLabel">
 				&nbsp;

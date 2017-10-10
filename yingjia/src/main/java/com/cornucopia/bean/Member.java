@@ -1,5 +1,7 @@
 package com.cornucopia.bean;
 
+import java.util.Date;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -17,8 +19,8 @@ public class Member {
 	private int status;
 	private int del_flag;
 	private String identity;
-	private String create_date;
-	private String update_date;
+	private Date create_date;
+	private Date update_date;
 	private String weiBoAccount;
 	private String weixinAccount;
 	private int headid;
@@ -100,19 +102,19 @@ public class Member {
 		this.identity = identity;
 	}
 
-	public String getCreate_date() {
+	public Date getCreate_date() {
 		return create_date;
 	}
 
-	public void setCreate_date(String create_date) {
-		this.create_date = create_date;
+	public void setCreate_date(Date date) {
+		this.create_date = date;
 	}
 
-	public String getUpdate_date() {
+	public Date getUpdate_date() {
 		return update_date;
 	}
 
-	public void setUpdate_date(String update_date) {
+	public void setUpdate_date(Date update_date) {
 		this.update_date = update_date;
 	}
 

@@ -8,21 +8,21 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
-@Table(name="Member_profit_record")//»áÔ±ÊÕÒæ¼ÇÂ¼±í
+@Table(name="Member_profit_record")//ï¿½ï¿½Ô±ï¿½ï¿½ï¿½ï¿½ï¿½Â¼ï¿½ï¿½
 @Entity
 public class MemberProfitRecord {
 
-	private int id;// Ö÷¼ü
-	private String serial_number;// Á÷Ë®ºÅ
-	private int type;// ÀàÐÍ
-	private int amount;// ½ð¶î
-	private int delflag;// ±êÖ¾
-	private String create_date;// ´´½¨Ê±¼ä
-	private String update_date;// ÐÞ¸ÄÊ±¼ä
-	private String comment;// ±¸×¢
-	private int profit_year;// Ä¬ÈÏ¡®0¡¯ ¼ÆÏ¢Äê
-	private int profit_month;// Ä¬ÈÏ¡®0¡¯ ¼ÆÏ¢ÔÂ
-	private int profit_day;// Ä¬ÈÏ¡®0¡¯ ¼ÆÏ¢ÈÕ
+	private int id;// ï¿½ï¿½ï¿½ï¿½
+	private String serial_number;// ï¿½ï¿½Ë®ï¿½ï¿½
+	private int type;// ï¿½ï¿½ï¿½ï¿½
+	private float amount;// ï¿½ï¿½ï¿½
+	private int delflag;// ï¿½ï¿½Ö¾
+	private Date create_date;// ï¿½ï¿½ï¿½ï¿½Ê±ï¿½ï¿½
+	private Date update_date;// ï¿½Þ¸ï¿½Ê±ï¿½ï¿½
+	private String comment;// ï¿½ï¿½×¢
+	private int profit_year;// Ä¬ï¿½Ï¡ï¿½0ï¿½ï¿½ ï¿½ï¿½Ï¢ï¿½ï¿½
+	private int profit_month;// Ä¬ï¿½Ï¡ï¿½0ï¿½ï¿½ ï¿½ï¿½Ï¢ï¿½ï¿½
+	private int profit_day;// Ä¬ï¿½Ï¡ï¿½0ï¿½ï¿½ ï¿½ï¿½Ï¢ï¿½ï¿½
 	private Member member;
 	private Subject subject;
 	
@@ -62,11 +62,11 @@ public class MemberProfitRecord {
 	public void setType(int type) {
 		this.type = type;
 	}
-	public int getAmount() {
+	public float getAmount() {
 		return amount;
 	}
-	public void setAmount(int amount) {
-		this.amount = amount;
+	public void setAmount(float interest) {
+		this.amount = interest;
 	}
 	public int getDelflag() {
 		return delflag;
@@ -74,16 +74,16 @@ public class MemberProfitRecord {
 	public void setDelflag(int delflag) {
 		this.delflag = delflag;
 	}
-	public String getCreate_date() {
+	public Date getCreate_date() {
 		return create_date;
 	}
-	public void setCreate_date(String create_date) {
-		this.create_date = create_date;
+	public void setCreate_date(Date date) {
+		this.create_date = date;
 	}
-	public String getUpdate_date() {
+	public Date getUpdate_date() {
 		return update_date;
 	}
-	public void setUpdate_date(String update_date) {
+	public void setUpdate_date(Date update_date) {
 		this.update_date = update_date;
 	}
 	public String getComment() {

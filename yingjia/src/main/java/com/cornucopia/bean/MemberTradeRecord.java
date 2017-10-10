@@ -1,5 +1,7 @@
 package com.cornucopia.bean;
 
+import java.util.Date;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -12,16 +14,37 @@ import javax.persistence.Table;
 public class MemberTradeRecord {
 	
 	
-	private int id;// Ö÷¼ü
-	private String trade_no;// ½»Ò×ºÅ
-	private String trade_name;// ½»Ò×Ãû³Æ
-	private String counterpart;// ½»Ò×¶Ô·½
-	private int amount;// ½»Ò×½ð¶î
-	private String trade_type;// ½»Ò×·ÖÀà
-	private int fund_flow;// ×Ê½ðÁ÷Ïò£¨0£ºÁ÷³ö£¬1£ºÁ÷Èë£©
-	private int trade_status;// ½»Ò××´Ì¬
-	private String create_date;// ´´½¨Ê±¼ä
-	private String update_date;// ÐÞ¸ÄÊ±¼ä
+	private int id;// ï¿½ï¿½ï¿½ï¿½
+	private String trade_no;// ï¿½ï¿½ï¿½×ºï¿½
+	private String trade_name;// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	private String counterpart;// ï¿½ï¿½ï¿½×¶Ô·ï¿½
+	private int amount;// ï¿½ï¿½ï¿½×½ï¿½ï¿½
+	private String trade_type;// ï¿½ï¿½ï¿½×·ï¿½ï¿½ï¿½
+	private int fund_flow;// ï¿½Ê½ï¿½ï¿½ï¿½ï¿½ï¿½0ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½1ï¿½ï¿½ï¿½ï¿½ï¿½ë£©
+	private String ext_field_1;
+	private String ext_field_2;
+	private String ext_field_3;
+	public String getExt_field_1() {
+		return ext_field_1;
+	}
+	public void setExt_field_1(String ext_field_1) {
+		this.ext_field_1 = ext_field_1;
+	}
+	public String getExt_field_2() {
+		return ext_field_2;
+	}
+	public void setExt_field_2(String ext_field_2) {
+		this.ext_field_2 = ext_field_2;
+	}
+	public String getExt_field_3() {
+		return ext_field_3;
+	}
+	public void setExt_field_3(String ext_field_3) {
+		this.ext_field_3 = ext_field_3;
+	}
+	private int trade_status;// ï¿½ï¿½ï¿½ï¿½×´Ì¬
+	private Date create_date;// ï¿½ï¿½ï¿½ï¿½Ê±ï¿½ï¿½
+	private Date update_date;// ï¿½Þ¸ï¿½Ê±ï¿½ï¿½
 	private Member member;
 	
 	@ManyToOne
@@ -66,17 +89,17 @@ public class MemberTradeRecord {
 	public void setTrade_type(String trade_type) {
 		this.trade_type = trade_type;
 	}
-	public String getCreate_date() {
+	public Date getCreate_date() {
 		return create_date;
 	}
-	public void setCreate_date(String create_date) {
+	public void setCreate_date(Date create_date) {
 		this.create_date = create_date;
 	}
-	public String getUpdate_date() {
+	public Date getUpdate_date() {
 		return update_date;
 	}
-	public void setUpdate_date(String update_date) {
-		this.update_date = update_date;
+	public void setUpdate_date(Date date) {
+		this.update_date = date;
 	}
 	public String getCounterpart() {
 		return counterpart;

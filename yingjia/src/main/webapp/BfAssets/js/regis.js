@@ -32,8 +32,7 @@ $(function() {
 		
 		phone.keyup(function() {
 			if ((/^1[3-9][0-9]\d{8}$/.test(phone.val()))) {
-				alert("123");
-				$.post("/yingJiaProfit/toFrontLogin/phone",{phone:phone.val()},function(msg){
+				$.post("/Ying_Second/font/fontSignPhone",{phone:phone.val()},function(msg){
 					if (msg=='no') {
 						phone.focus().css(css);
 						phone.next(".errorInfo").html("此手机号已注册").show();
@@ -109,16 +108,15 @@ $(function() {
 			}
 			if (password.val()!=password2.val()) {
 				password2.focus().css(css);
-				password2.next(".err[orInfo").html("两次密码不一致").show();
+				password2.next(".errorInfo").html("两次密码不一致").show();
 				return;
 			}
 			if($("#registerRule").attr("checked")!='checked'){
 				alert("本网站服务协议还未加入");
 				return;
 			}
-			$.post("/yingJiaProfit/toFrontLogin/zhuce",{mobile_Phone:phone.val(),member_name:youname.val(),name:youname.val(),salt:'javamd',password:password.val(),invitationCode:invitationCode.val(),qqAccount:qqAccount.val(),status:0,del_flag:0},function(msg){
-				alert(msg);
-				window.location.href="/yingJiaProfit/toFrontLogin/login";
+			$.post("/Ying_Second/font/sureFontSign",{mobile_Phone:phone.val(),member_name:youname.val(),name:youname.val(),salt:'javamd',password:password.val(),invitationCode:invitationCode.val(),qqAccount:qqAccount.val(),status:0,del_flag:0},function(msg){
+				window.location.href="/Ying_Second/frontIframeLogin";
 			});
 //			$.ajax({
 //				type : "POST", // 用POST方式传输

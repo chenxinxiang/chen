@@ -105,12 +105,15 @@
 
     });
 
-</script>    <div class="proMain">
+</script>   
+<form action="/yingjia/font/login" method="post">
+ <div class="proMain">
     	<div class="container">
             <div class="row login">
                 <div class="loginPic">
                     <img src="../BfAssets/resources/web/images/loginImg.png" tppabs="http://pro.ying158.com/resources/web/images/loginImg.png" />
                 </div>
+                
                 <div class="loginBlock">
                     <img class="cornerImg" src="../BfAssets/resources/web/images/loginCorner.png" tppabs="http://pro.ying158.com/resources/web/images/loginCorner.png" />
                     <div class="item item1">
@@ -134,7 +137,7 @@
                         <span id="loginError"></span><a class="forgetLink" href="/yingjia/item2/contact" tppabs="http://pro.ying158.com/web/forget">忘记密码？</a>
                     </div>
                     <div class="rest">
-                     <button><a href="/yingjia/item2/Contact"> 立即登录</a></button>
+                    <input type="submit" value="立即登录">
                     </div>
                     <div class="rest">
                         <span class="registUrl">没有账号？<a href="regis.htm" tppabs="http://pro.ying158.com/web/regis">免费注册</a></span>
@@ -144,6 +147,7 @@
             </div>
         </div>
     </div>
+    </form>
 <script type="text/javascript" src="../BfAssets/resources/web/js/login.js" tppabs="http://pro.ying158.com/resources/web/js/login.js"></script>
 <script type="text/javascript">
 $(function(){

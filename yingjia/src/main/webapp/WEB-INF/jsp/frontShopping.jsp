@@ -325,7 +325,7 @@ li.active a {
 
 $(function(){
 	$("#btnBuy").click(function(){ 
-	  $("#form1").attr("action","/yingJiaProfit/shopping/goBuy");
+	  $("#form1").attr("action","/yingjia/product/afterBuy");
 		$("#form1").submit();
 	});
 	});

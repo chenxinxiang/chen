@@ -8,16 +8,16 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
-@Table(name="Member_tally")//¼ÇÕË
+@Table(name="Member_tally")//ï¿½ï¿½ï¿½ï¿½
 @Entity
 public class Member_tally {
 
-	private int id;//Ö÷¼ü
-	private int type_id;//Ïû·ÑÀàÐÍid
-	private String type_name;//Ïû·ÑÀàÐÍÃû³Æ
-	private int amount;//½ð¶î
-	private String pay_date;//¸¶¿îÊ±¼ä
-	private String create_date;//´´½¨Ê±¼ä
+	private int id;//ï¿½ï¿½ï¿½ï¿½
+	private int type_id;//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½id
+	private String type_name;//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	private int amount;//ï¿½ï¿½ï¿½
+	private Date pay_date;//ï¿½ï¿½ï¿½ï¿½Ê±ï¿½ï¿½
+	private Date create_date;//ï¿½ï¿½ï¿½ï¿½Ê±ï¿½ï¿½
 	private Member member;
 	@ManyToOne
 	@JoinColumn(name="member_id")
@@ -53,17 +53,17 @@ public class Member_tally {
 	public void setAmount(int amount) {
 		this.amount = amount;
 	}
-	public String getPay_date() {
+	public Date getPay_date() {
 		return pay_date;
 	}
-	public void setPay_date(String pay_date) {
-		this.pay_date = pay_date;
+	public void setPay_date(Date date) {
+		this.pay_date = date;
 	}
-	public String getCreate_date() {
+	public Date getCreate_date() {
 		return create_date;
 	}
-	public void setCreate_date(String string) {
-		this.create_date = string;
+	public void setCreate_date(Date date) {
+		this.create_date = date;
 	}
 	
 	

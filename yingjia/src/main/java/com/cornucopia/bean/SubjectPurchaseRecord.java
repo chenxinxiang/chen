@@ -1,4 +1,6 @@
 package com.cornucopia.bean;
+import java.util.Date;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -11,20 +13,20 @@ import javax.persistence.Table;
 
 public class SubjectPurchaseRecord {
                   
-	private int id;// Ö÷¼ü
-	private String serial_number;// Á÷Ë®ºÅ
-	private int amount;// ¹ºÂò½ð¶î
-	private String deal_id;// ½»Ò×IP
-	private int delflag;// ÊÇ·ñÉ¾³ý
-	private String  create_date;// ´´½¨Ê±¼ä
-	private String update_date;// ÐÞ¸ÄÊ±¼ä
-	private int interest;// ½áËãÀûÏ¢
-	private int ispayment;// ÊÇ·ñ»¹¿î
-	private int pay_interest_times;// ¹ºÂò´ÎÊý
-	private String last_profit_day;// ×îºó¼ÆÏ¢ÈÕ
-	private String bonus_info;// ºì°ü½ð¶îÐÅÏ¢£¨app¶ËÊµ¼ÊÍ¶×Ê¶î¶È+ºì°ü¶î¶È)
-	private Member member;// »áÔ±±í
-	private Subject subject;//±êµÄ±ê
+	private int id;// ï¿½ï¿½ï¿½ï¿½
+	private String serial_number;// ï¿½ï¿½Ë®ï¿½ï¿½
+	private int amount;// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	private String deal_id;// ï¿½ï¿½ï¿½ï¿½IP
+	private int delflag;// ï¿½Ç·ï¿½É¾ï¿½ï¿½
+	private Date  create_date;// ï¿½ï¿½ï¿½ï¿½Ê±ï¿½ï¿½
+	private Date update_date;// ï¿½Þ¸ï¿½Ê±ï¿½ï¿½
+	private float interest;// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢
+	private int ispayment;// ï¿½Ç·ñ»¹¿ï¿½
+	private int pay_interest_times;// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	private int last_profit_day;// ï¿½ï¿½ï¿½ï¿½Ï¢ï¿½ï¿½
+	private String bonus_info;// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢ï¿½ï¿½appï¿½ï¿½Êµï¿½ï¿½Í¶ï¿½Ê¶ï¿½ï¿½+ï¿½ï¿½ï¿½ï¿½ï¿½)
+	private Member member;// ï¿½ï¿½Ô±ï¿½ï¿½
+	private Subject subject;//ï¿½ï¿½Ä±ï¿½
 	
 	@Id
 	@GeneratedValue
@@ -59,23 +61,23 @@ public class SubjectPurchaseRecord {
 	public void setDelflag(int delflag) {
 		this.delflag = delflag;
 	}
-	public String getCreate_date() {
+	public Date getCreate_date() {
 		return create_date;
 	}
-	public void setCreate_date(String create_date) {
-		this.create_date = create_date;
+	public void setCreate_date(Date date) {
+		this.create_date = date;
 	}
-	public String getUpdate_date() {
+	public Date getUpdate_date() {
 		return update_date;
 	}
-	public void setUpdate_date(String update_date) {
+	public void setUpdate_date(Date update_date) {
 		this.update_date = update_date;
 	}
-	public int getInterest() {
+	public float getInterest() {
 		return interest;
 	}
-	public void setInterest(int interest) {
-		this.interest = interest;
+	public void setInterest(float interest2) {
+		this.interest = interest2;
 	}
 	public int getIspayment() {
 		return ispayment;
@@ -89,11 +91,11 @@ public class SubjectPurchaseRecord {
 	public void setPay_interest_times(int pay_interest_times) {
 		this.pay_interest_times = pay_interest_times;
 	}
-	public String getLast_profit_day() {
+	public int getLast_profit_day() {
 		return last_profit_day;
 	}
-	public void setLast_profit_day(String last_profit_day) {
-		this.last_profit_day = last_profit_day;
+	public void setLast_profit_day(int i) {
+		this.last_profit_day = i;
 	}
 	public String getBonus_info() {
 		return bonus_info;

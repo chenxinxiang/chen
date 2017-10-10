@@ -337,7 +337,7 @@
 								</p>
 								<p class="txt" style="height: 72px;">管理人：深圳市凯丰投资管理有限公司</p>
 								<p class="abox">
-									<a href="/yingjia/item2/frontShopping">立即购买</a>
+									<a href="/yingjia/product/toBuy?id=1628">立即购买</a>
 								</p>
 						</li>
 						<li>
@@ -354,7 +354,7 @@
 								</p>
 								<p class="txt" style="height: 72px;">管理人：深圳市凯丰投资管理有限公司</p>
 								<p class="abox">
-									<a href="/yingjia/item2/frontShopping">立即购买</a>
+									<a href="/yingjia/product/toBuy?id=1637">立即购买</a>
 								</p>
 <!-- 						</a> -->
 						</li>
@@ -373,7 +373,7 @@
 								</p>
 								<p class="txt" style="height: 72px;">精品私募</p>
 								<p class="abox">
-									<a href="/yingjia/item2/frontShopping">立即购买</a>
+									<a href="/yingjia/product/toBuy?id=1638">立即购买</a>
 								</p>
 <!-- 						</a> -->
 						</li>

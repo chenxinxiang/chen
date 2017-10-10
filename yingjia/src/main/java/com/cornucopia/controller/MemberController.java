@@ -265,7 +265,6 @@ public class MemberController {
 		//奖励记录
 		@RequestMapping("/Reward")
 		public String Reward(Model model,String id){
-			System.out.println(id+"------------");
 			List list1=new ArrayList();
 			List list2=new ArrayList();
 			List list3 =new ArrayList();

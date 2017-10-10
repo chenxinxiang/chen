@@ -10,6 +10,7 @@ public class UserController {
 	public String home(){
 		return "home";
 	}
+	//登陆
 	@RequestMapping("login")
 	public String login(){
 		return "login";
@@ -122,6 +123,10 @@ public class UserController {
 	@RequestMapping("frontShopping")
 	public String frontShopping(){
 		return "frontShopping";
+	}
+	@RequestMapping("memberSafe")
+	public String memberSafe(){
+		return "memberSafe";
 	}
 	
 	
